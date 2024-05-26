@@ -120,6 +120,8 @@ alias lal="eza -la --group-directories-first"
 alias lsl="eza -l --group-directories-first"
 alias ls="eza --group-directories-first"
 alias nos="sudo nixos-rebuild switch --flake /home/wobbat/wobbix"
+alias g3="gnome-shell --wayland"
+alias hl="hyperland"
 
 
 starship init fish | source

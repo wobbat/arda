@@ -1,20 +1,21 @@
+{ pkgs, inputs, ... }:
+
 {
-  pkgs,
-  inputs,
-  ...
-}: let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  hyprland-session = "${pkgs.system}.hyprland}/share/wayland-sessions";
-in {
-  services.greetd = {
+ services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --time --remember --remember-session --sessions g3";
-        user = "wobbat";
+        command = "${pkgs.hyprland}/bin/hyprland";
       };
     };
   };
+
+  environment.etc."greetd/environments".text = ''
+    hyprland
+    fish
+    bash
+    gnome-session --session gnome-wayland
+  '';
 
   # this is a life saver.
   # literally no documentation about this anywhere.
