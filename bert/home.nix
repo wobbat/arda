@@ -38,6 +38,9 @@
     btop
     iotop
     iftop 
+
+    #other
+    discord
   ];
 
   programs.git = {
@@ -45,6 +48,80 @@
     userName = "wobbat";
     userEmail = "wobbat@proton.me";
   };
+
+  programs.starship = {
+    enable = true;
+    # Configuration written to ~/.config/starship.toml
+    settings = {
+    format = ''
+$time $directory
+$character
+'';
+    right_format = ''$all'';
+
+      # add_newline = false;
+
+      character = {
+        success_symbol = "[|](bold red)[|](bold green)[|](bold yellow)[|](bold purple)[|](bold blue)";
+        error_symbol = "[|](bold red)[|](bold red)[|](bold red)[|](bold red)[|](bold red)";
+      };
+
+      aws = {
+        disabled = true;
+      };
+
+      time = {
+        disabled = false;
+        format = "[$time](white bold)";
+        time_format = "%H:%M";
+      };
+            
+      directory = {
+        style = "white bold";
+      };
+      # package.disabled = true;
+    };
+  };
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+set fish_color_error normal
+set fish_color_command green
+set fish_greeting
+
+switch (uname)
+case Linux
+    #echo Hi Tux!
+    fish_add_path $HOME/.cargo/bin
+case Darwin
+    eval (/opt/homebrew/bin/brew shellenv)
+    fish_add_path $HOME/go/bin
+case FreeBSD NetBSD DragonFly
+    #echo Hi Beastie!
+case '*'
+    #echo Hi, stranger!
+end
+
+alias cl="clear"
+
+#ls replacement with exa
+alias la="eza -a --group-directories-first"
+alias lal="eza -la --group-directories-first"
+alias lsl="eza -l --group-directories-first"
+alias ls="eza --group-directories-first"
+alias nos="sudo nixos-rebuild switch --flake /home/wobbat/wobbix"
+
+
+starship init fish | source
+    '';
+
+  };
+
+
 
   # starship - an customizable prompt for any shell
 #   programs.starship = {
@@ -58,20 +135,21 @@
 #     };
 #   };
 
-  # alacritty - a cross-platform, GPU-accelerated terminal emulator
-#   programs.alacritty = {
-#     enable = true;
-#     # custom settings
-#     settings = {
-#       env.TERM = "xterm-256color";
-#       font = {
-#         size = 12;
-#         draw_bold_text_with_bright_colors = true;
-#       };
-#       scrolling.multiplier = 5;
-#       selection.save_to_clipboard = true;
-#     };
-#   };
+  programs.alacritty = {
+    enable = true;
+    # shell = pkgs.fish;
+    # custom settings
+    settings = {
+      env.TERM = "xterm-256color";
+      font = {
+        size = 14;
+      };
+      shell = "fish";
+      scrolling.multiplier = 5;
+      selection.save_to_clipboard = true;
+    };
+  };
+
 
 #   programs.bash = {
 #     enable = true;
