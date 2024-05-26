@@ -1,6 +1,12 @@
 { config, pkgs, inputs, ... }:
 
 {
+
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hyprland.nix
+    ];
+
   home.username = "wobbat";
   home.homeDirectory = "/home/wobbat";
 
@@ -149,6 +155,8 @@ starship init fish | source
       selection.save_to_clipboard = true;
     };
   };
+
+
 
 
 #   programs.bash = {

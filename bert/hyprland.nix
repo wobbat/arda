@@ -18,28 +18,25 @@
       };
 
       animations = {
-        enabled = false;
+        enabled = true;
       };
 
       input = {
         kb_layout = "us";
-        kb_variant = "colemak";
         follow_mouse = 1;
         touchpad = {
           natural_scroll = true;
         };
 
-        kb_options = "ctrl:nocaps";
+        # kb_options = "ctrl:nocaps";
       };
 
       "$mod" = "SUPER";
 
       bind = [
-        "$mod, Q, exec, kitty"
-        "$mod, B, exec, brave"
-        "$mod, D, exec, discord"
+        "$mod, t, exec, alacritty"
 
-        "$mod, W, killactive"
+        "$mod, q, killactive"
 
         "$mod, M, exit"
         "$mod, h, movefocus, l"
@@ -60,4 +57,30 @@
       ];
     };
   };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.system}.hyprland}/share/wayland-sessions";
+        user = "greeter";
+      };
+    };
+  };
+
+  # this is a life saver.
+  # literally no documentation about this anywhere.
+  # might be good to write about this...
+  # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
 }
+
