@@ -68,11 +68,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716711219,
-        "narHash": "sha256-TnZETiQPXbyT5mdCHMOyrJnx2+BwroMBRrguciz1vEo=",
+        "lastModified": 1716736527,
+        "narHash": "sha256-emuNxJLX3Ph88rlx1BwKbi4rrHJ2ytIUwQylZw1HIWA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "05e6ba83eb3585ce0aff7b41e4bd0e317d05ad4a",
+        "rev": "b2a4ddf657e6ad87569665545ffaf7dd5e9a02af",
         "type": "github"
       },
       "original": {
@@ -113,11 +113,28 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1716509168,
+        "narHash": "sha256-4zSIhSRRIoEBwjbPm3YiGtbd8HDWzFxJjw5DYSDy1n8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bfb7a882678e518398ce9a31a881538679f6f092",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "helix": "helix",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "wbp": "wbp"
       }
     },
     "rust-overlay": {
@@ -157,6 +174,24 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wbp": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1716736644,
+        "narHash": "sha256-klpNc+W0ILxX58n/uso/fLhzKvBLpfUgFAEIRR2Jtak=",
+        "owner": "wobbat",
+        "repo": "wobbix_packages",
+        "rev": "63040ff2b69aabef42a36ca6244fe23305755058",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wobbat",
+        "repo": "wobbix_packages",
         "type": "github"
       }
     }

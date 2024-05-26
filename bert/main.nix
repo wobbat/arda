@@ -5,6 +5,8 @@
 { config, pkgs, inputs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware.nix
@@ -92,9 +94,6 @@
 
   # Install firefox.
   # programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
