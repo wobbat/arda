@@ -10,6 +10,8 @@
         firefox
         wget
         python3
+        jetbrains-mono
+
   ];
 
 }

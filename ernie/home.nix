@@ -31,7 +31,7 @@
     "Xft.dpi" = 172;
   };
 
-  # Packages that should be installed to the user profile.
+  # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
     eza
     
@@ -150,7 +150,11 @@ starship init fish | source
     settings = {
       env.TERM = "xterm-256color";
       font = {
-        size = 14;
+        size = 16;
+        normal = {
+        family = "Jetbrains Mono";
+        style  = "Bold";
+        };
       };
       shell = "fish";
       scrolling.multiplier = 5;
