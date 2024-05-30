@@ -2,16 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   nixpkgs.config.allowUnfree = true;
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware.nix
-      ./packages.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware.nix
+    ./packages.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -33,7 +38,7 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-   programs.nh = {
+  programs.nh = {
     enable = true;
     # clean.enable = true;
     # clean.extraArgs = "--keep-since 4d --keep 3";
@@ -95,19 +100,23 @@
   users.users.wobbat = {
     isNormalUser = true;
     description = "stan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   # Install firefox.
   # programs.firefox.enable = true;
 
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -135,5 +144,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

@@ -1,13 +1,13 @@
 {
-      programs.starship = {
+  programs.starship = {
     enable = true;
     # Configuration written to ~/.config/starship.toml
     settings = {
-    format = ''
-$time $directory
-$character
-'';
-    right_format = ''$all'';
+      format = ''
+        $time $directory
+        $character
+      '';
+      right_format = ''$all'';
 
       # add_newline = false;
 
@@ -25,12 +25,11 @@ $character
         format = "[$time](white bold)";
         time_format = "%H:%M";
       };
-            
+
       directory = {
         style = "white bold";
       };
       # package.disabled = true;
     };
   };
-
 }
