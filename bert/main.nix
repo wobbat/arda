@@ -11,7 +11,6 @@
     [ # Include the results of the hardware scan.
       ./hardware.nix
       ./packages.nix
-      ./dm.nix
     ];
 
   # Bootloader.
@@ -34,6 +33,13 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+   programs.nh = {
+    enable = true;
+    # clean.enable = true;
+    # clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/wobbat/wobbix";
+  };
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "nl_NL.UTF-8";
     LC_IDENTIFICATION = "nl_NL.UTF-8";
@@ -50,7 +56,7 @@
   services.xserver.enable = true;
 
   # # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = false;
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;

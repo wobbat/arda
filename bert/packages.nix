@@ -11,6 +11,7 @@
         wget
         python3
         jetbrains-mono
+        nix-output-monitor
 
   ];
 

@@ -4,7 +4,8 @@
 
   imports =
     [ # Include the results of the hardware scan.
-      ./hyprland.nix
+      ./home/hyprland.nix
+      ./home/fish.nix
     ];
 
   home.username = "wobbat";
@@ -43,10 +44,10 @@
     which
     btop
     iotop
-    iftop 
-
+    iftop
     #other
     discord
+    signal-desktop
   ];
 
   programs.git = {
@@ -89,45 +90,7 @@ $character
     };
   };
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
 
-set fish_color_error normal
-set fish_color_command green
-set fish_greeting
-
-switch (uname)
-case Linux
-    #echo Hi Tux!
-    fish_add_path $HOME/.cargo/bin
-case Darwin
-    eval (/opt/homebrew/bin/brew shellenv)
-    fish_add_path $HOME/go/bin
-case FreeBSD NetBSD DragonFly
-    #echo Hi Beastie!
-case '*'
-    #echo Hi, stranger!
-end
-
-alias cl="clear"
-
-#ls replacement with exa
-alias la="eza -a --group-directories-first"
-alias lal="eza -la --group-directories-first"
-alias lsl="eza -l --group-directories-first"
-alias ls="eza --group-directories-first"
-alias nos="sudo nixos-rebuild switch --flake /home/wobbat/wobbix"
-alias g3="gnome-shell --wayland"
-alias hl="hyperland"
-
-
-starship init fish | source
-    '';
-
-  };
 
 
 
