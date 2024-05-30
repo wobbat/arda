@@ -12,6 +12,7 @@
     ./home/starship.nix
     ./home/alacritty.nix
     ./home/git.nix
+    ./home/nixvim.nix
   ];
 
   home.username = "wobbat";
@@ -40,8 +41,10 @@
     discord
     signal-desktop
     nixfmt-rfc-style
-  ];
 
+    #test
+    inconsolata
+  ];
 
   home.stateVersion = "23.11";
 

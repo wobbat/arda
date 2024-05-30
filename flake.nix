@@ -6,7 +6,9 @@
     helix.url = "github:helix-editor/helix/master";
     wbp.url = "github:wobbat/wobbix_packages";
     home-manager.url = "github:nix-community/home-manager";
+    nixvim.url = "github:nix-community/nixvim";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
