@@ -38,13 +38,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  programs.nh = {
-    enable = true;
-    # clean.enable = true;
-    # clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/wobbat/wobbix";
-  };
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "nl_NL.UTF-8";
     LC_IDENTIFICATION = "nl_NL.UTF-8";
