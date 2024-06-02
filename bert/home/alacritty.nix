@@ -21,37 +21,37 @@
         decorations = "buttonless";
       };
 
-      colors = {
-        # Default colors
-        primary = {
-          background = "#151515";
-          foreground = "#b4b4b4";
-        };
+      # colors = {
+      #   # Default colors
+      #   primary = {
+      #     background = "#151515";
+      #     foreground = "#b4b4b4";
+      #   };
 
-        # Normal colors
-        normal = {
-          black = "#151515";
-          red = "#7e4a3e";
-          green = "#65763e";
-          yellow = "#ab8652";
-          blue = "#8297b3";
-          magenta = "#77526f";
-          cyan = "#5f7a71";
-          white = "0xcbe3e7";
-        };
+      #   # Normal colors
+      #   normal = {
+      #     black = "#151515";
+      #     red = "#7e4a3e";
+      #     green = "#65763e";
+      #     yellow = "#ab8652";
+      #     blue = "#8297b3";
+      #     magenta = "#77526f";
+      #     cyan = "#5f7a71";
+      #     white = "0xcbe3e7";
+      #   };
 
-        # # Bright colors
-        # bright = {
-        #   black = "#151515";
-        #   red = "#ab8652";
-        #   green = "0x62d196";
-        #   yellow = "0xffb378";
-        #   blue = "0x65b2ff";
-        #   magenta = "0x906cff";
-        #   cyan = "0x63f2f1";
-        #   white = "#b4b4b4";
-        # };
-      };
+      #   # # Bright colors
+      #   # bright = {
+      #   #   black = "#151515";
+      #   #   red = "#ab8652";
+      #   #   green = "0x62d196";
+      #   #   yellow = "0xffb378";
+      #   #   blue = "0x65b2ff";
+      #   #   magenta = "0x906cff";
+      #   #   cyan = "0x63f2f1";
+      #   #   white = "#b4b4b4";
+      #   # };
+      # };
     };
   };
 }

@@ -13,6 +13,7 @@
     ./home/alacritty.nix
     ./home/git.nix
     ./home/nixvim.nix
+    ./home/dev.nix
   ];
 
   home.username = "wobbat";
@@ -41,6 +42,8 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     eza
+    morgen
+    obsidian
     #security
     nmap
 

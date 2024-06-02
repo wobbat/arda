@@ -1,4 +1,16 @@
-# Packages that should be installed to the user profile.
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+
+{
   home.packages = with pkgs; [
     go
+    yarn
+    nodejs_22 
+    gnumake
+  
   ];
+}
