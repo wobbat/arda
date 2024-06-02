@@ -6,13 +6,19 @@
     helix.url = "github:helix-editor/helix/master";
     wbp.url = "github:wobbat/wobbix_packages";
     home-manager.url = "github:nix-community/home-manager";
-    nixvim.url = "github:nix-community/nixvim";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # Neovim
+    nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
-    inputs@{ nixpkgs, home-manager, ... }:
+    inputs@{
+      nixpkgs,
+      home-manager,
+      nixvim,
+      ...
+    }:
     {
       nixosConfigurations = {
         bert = nixpkgs.lib.nixosSystem {
@@ -27,7 +33,11 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.wobbat = import ./bert/home.nix;
+              #home-manager.users.wobbat = import ./bert/home.nix;
+              home-manager.users.wobbat.imports = [
+                ./bert/home.nix
+                inputs.nixvim.homeManagerModules.nixvim
+              ];
 
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix

@@ -1,8 +1,21 @@
 {
+  programs.nixvim.enable = true;
   programs.nixvim = {
-    # This just enables NixVim.
-    # If all you have is this, then there will be little visible difference
-    # when compared to just installing NeoVim.
-    enable = true;
+    colorschemes.kanagawa.enable = true;
+    colorscheme = "kanagawa";
+    plugins = {
+      telescope = {
+        enable = true;
+        keymaps = {
+          "<C-p>" = {
+            action = "git_files";
+            options = {
+              desc = "Telescope Git Files";
+            };
+          };
+          "<leader>fg" = "live_grep";
+        };
+      };
+    };
   };
 }

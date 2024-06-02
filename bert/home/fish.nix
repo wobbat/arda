@@ -37,7 +37,8 @@
       alias wob=" sudo nixos-rebuild switch --flake /home/wobbat/wobbix &| nom"
       alias g3="gnome-shell --wayland"
       alias hl="hyperland"
-
+      alias frun="fuzzel -I -b 151515ff -f 'Inconsolata bold: size=24' -B0 -x1000 -y1000"
+      alias hldm="hyprctl keyword monitor eDP-1, disable"
 
       starship init fish | source
     '';

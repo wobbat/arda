@@ -39,6 +39,7 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
+  security.polkit.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -58,11 +59,13 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.lightdm.enable = false;
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome.enable = true;
+   # Enable the GNOME Desktop Environment.
+    # services.xserver.displayManager.gdm.enable = true;
+    # services.xserver.displayManager.gdm.wayland = true;
+    # services.xserver.desktopManager.gnome.enable = true;
+
+services.xserver.displayManager.lightdm.enable = false;
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -72,6 +75,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.package = pkgs.bluez;
+  services.blueman.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -116,6 +124,26 @@
     "flakes"
   ];
 
+  services.interception-tools =
+  let
+    itools = pkgs.interception-tools;
+    itools-caps = pkgs.interception-tools-plugins.caps2esc;
+  in
+  {
+    enable = true;
+    plugins = [ itools-caps ];
+    # requires explicit paths: https://github.com/NixOS/nixpkgs/issues/126681
+    udevmonConfig = pkgs.lib.mkDefault ''
+      - JOB: "${itools}/bin/intercept -g $DEVNODE | ${itools-caps}/bin/caps2esc -m 1 | ${itools}/bin/uinput -d $DEVNODE"
+        DEVICE:
+          EVENTS:
+            EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+    '';
+  };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  programs.light.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

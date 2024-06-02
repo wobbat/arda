@@ -18,6 +18,8 @@
     python3
     jetbrains-mono
     nix-output-monitor
-
+    gnomeExtensions.forge
+    ripgrep
+    jdk22
   ];
 }
