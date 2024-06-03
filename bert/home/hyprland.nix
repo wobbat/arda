@@ -86,7 +86,7 @@
         # "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
       ];
 
-      "$mod" = "SUPER";
+      "$mod" = "ALT";
 
       bind = [
         "$mod, return, exec, alacritty"

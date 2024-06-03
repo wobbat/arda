@@ -39,6 +39,7 @@
       alias hl="hyperland"
       alias frun="fuzzel -I -b 151515ff -f 'Inconsolata bold: size=24' -B0 -x1000 -y1000"
       alias hldm="hyprctl keyword monitor eDP-1, disable"
+      alias hlsl="hyprctl keyword monitor 'eDP-1,2880x1800@90,0x0,1.6'"
 
       starship init fish | source
     '';

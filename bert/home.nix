@@ -14,6 +14,7 @@
     ./home/git.nix
     ./home/nixvim.nix
     ./home/dev.nix
+    ./home/waybar.nix
   ];
 
   home.username = "wobbat";
@@ -44,6 +45,8 @@
     eza
     morgen
     obsidian
+    microsoft-edge
+    brave
     #security
     nmap
 
