@@ -76,9 +76,12 @@
             home.username = "wobbat";
             home.homeDirectory = "/home/wobbat";
             home.stateVersion = "24.05";
-              inputs.nixpkgs.config = {
-                allowUnfree = true;
-            };
+            nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
           }
         ];
       };
