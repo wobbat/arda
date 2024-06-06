@@ -77,9 +77,9 @@
             home.homeDirectory = "/home/wobbat";
             home.stateVersion = "24.05";
 
-                allowUnfree = true;
+            config.allowUnfree = true;
               # Workaround for https://github.com/nix-community/home-manager/issues/2942
-             allowUnfreePredicate = _: true;
+             config.allowUnfreePredicate = _: true;
 
           }
         ];
