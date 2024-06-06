@@ -76,11 +76,9 @@
             home.username = "wobbat";
             home.homeDirectory = "/home/wobbat";
             home.stateVersion = "24.05";
-
-            config.allowUnfree = true;
-              # Workaround for https://github.com/nix-community/home-manager/issues/2942
-             config.allowUnfreePredicate = _: true;
-
+              pkgs.config = {
+                allowUnfree = true;
+            };
           }
         ];
       };
