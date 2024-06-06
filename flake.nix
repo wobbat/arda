@@ -65,7 +65,7 @@
         };
       };
     homeConfigurations = {
-     linux = inputs.home-manager.lib.homeManagerConfiguration {
+     "wobbat@solo" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         modules = [
            ../bert/home/alacritty.nix
