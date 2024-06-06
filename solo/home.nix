@@ -19,6 +19,8 @@
     rxvt-unicode
     vscode
     eza
+    nixfmt-rfc-style
+
   ];
 
   # Let home Manager install and manage itself.

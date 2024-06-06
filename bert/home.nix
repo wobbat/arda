@@ -7,14 +7,14 @@
 
 {
   imports = [
-    ./home/hyprland.nix
-    ./home/fish.nix
-    ./home/starship.nix
-    ./home/alacritty.nix
-    ./home/git.nix
-    ./home/nixvim.nix
-    ./home/dev.nix
-    ./home/waybar.nix
+    ../shared/home/hyprland.nix
+    ../shared/home/fish.nix
+    ../shared/home/starship.nix
+    ../shared/home/alacritty.nix
+    ../shared/home/git.nix
+    ../shared/home/nixvim.nix
+    ../shared/home/dev.nix
+    ../shared/home/waybar.nix
   ];
 
   home.username = "wobbat";
