@@ -7,7 +7,10 @@
 
 {
   imports = [
-
+           ../shared/home/alacritty.nix
+           ../shared/home/starship.nix
+           ../shared/home/fish.nix
+           ../shared/home/git.nix
   ];
 
 
