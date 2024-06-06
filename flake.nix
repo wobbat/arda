@@ -69,7 +69,9 @@
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         modules = [
            ./bert/home/alacritty.nix
+           ./bert/home/starship.nix
            ./bert/home/fish.nix
+           ./solo/home.nix
           {
             home.username = "wobbat";
             home.homeDirectory = "/home/wobbat";
