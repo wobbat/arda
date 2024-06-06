@@ -71,6 +71,7 @@
            ./bert/home/alacritty.nix
            ./bert/home/starship.nix
            ./bert/home/fish.nix
+           ./bert/home/git.nix
            ./solo/home.nix
           {
             home.username = "wobbat";

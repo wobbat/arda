@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     rxvt-unicode
     vscode
+    eza
   ];
 
   # Let home Manager install and manage itself.
