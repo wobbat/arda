@@ -70,6 +70,7 @@
 
     #test
     inconsolata
+    hermit
     gnomeExtensions.forge
   ];
 

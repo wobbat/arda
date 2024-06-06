@@ -64,5 +64,19 @@
           ];
         };
       };
+    homeConfigurations = {
+     linux = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+           ../bert/home/alacritty.nix
+           ../bert/home/fish.nix
+          {
+            home.username = "wobbat";
+            home.homeDirectory = "/home/wobbat";
+          }
+        ];
+      };
+    };
+      
     };
 }

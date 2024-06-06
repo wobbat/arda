@@ -4,7 +4,8 @@
 
   imports =
     [ # Include the results of the hardware scan.
-      ./hyprland.nix
+      ../bert/home/alacritty.nix
+      ../bert/home/fish.nix
     ];
 
   home.username = "wobbat";
@@ -25,11 +26,17 @@
   #     xxx
   # '';
 
-  # set cursor size and dpi for 4k monitor
+   # set cursor size and dpi for 4k monitor
   xresources.properties = {
-    "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
+    "Xcursor.size" = 8;
+    # "Xft.dpi" = 172;
   };
+
+   home.pointerCursor = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+      size = 24;
+    };
 
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
@@ -89,46 +96,6 @@ $character
     };
   };
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
-set fish_color_error normal
-set fish_color_command green
-set fish_greeting
-
-switch (uname)
-case Linux
-    #echo Hi Tux!
-    fish_add_path $HOME/.cargo/bin
-case Darwin
-    eval (/opt/homebrew/bin/brew shellenv)
-    fish_add_path $HOME/go/bin
-case FreeBSD NetBSD DragonFly
-    #echo Hi Beastie!
-case '*'
-    #echo Hi, stranger!
-end
-
-alias cl="clear"
-
-#ls replacement with exa
-alias la="eza -a --group-directories-first"
-alias lal="eza -la --group-directories-first"
-alias lsl="eza -l --group-directories-first"
-alias ls="eza --group-directories-first"
-alias nos="sudo nixos-rebuild switch --flake /home/wobbat/wobbix"
-alias g3="gnome-shell --wayland"
-alias hl="hyperland"
-
-
-starship init fish | source
-    '';
-
-  };
-
 
 
   # starship - an customizable prompt for any shell
@@ -143,24 +110,24 @@ starship init fish | source
 #     };
 #   };
 
-  programs.alacritty = {
-    enable = true;
-    # shell = pkgs.fish;
-    # custom settings
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        size = 16;
-        normal = {
-        family = "Jetbrains Mono";
-        style  = "Bold";
-        };
-      };
-      shell = "fish";
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
-    };
-  };
+  # programs.alacritty = {
+  #   enable = true;
+  #   # shell = pkgs.fish;
+  #   # custom settings
+  #   settings = {
+  #     env.TERM = "xterm-256color";
+  #     font = {
+  #       size = 16;
+  #       normal = {
+  #       family = "Jetbrains Mono";
+  #       style  = "Bold";
+  #       };
+  #     };
+  #     shell = "fish";
+  #     scrolling.multiplier = 5;
+  #     selection.save_to_clipboard = true;
+  #   };
+  # };
 
 
 

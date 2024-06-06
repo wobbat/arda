@@ -11,6 +11,7 @@
     yarn
     nodejs_22 
     gnumake
+
   
   ];
 }
