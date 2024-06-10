@@ -4,7 +4,6 @@
     environment.systemPackages = with pkgs; [
         vscode
         inputs.helix.packages."${pkgs.system}".helix
-        # inputs.wbp.packages."${pkgs.system}".burppro
         burpsuite
         git
         firefox
@@ -21,8 +20,8 @@
         dotnetCorePackages.dotnet_8.sdk
         python312Packages.intelhex
         gnomeExtensions.tactile
-            nixfmt-rfc-style
-
+        nixfmt-rfc-style
+        google-chrome
   ];
 
 }

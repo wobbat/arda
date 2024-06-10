@@ -55,7 +55,7 @@
   services.xserver.enable = true;
 
   # testing this out to see if this improves?
-  services.xserver.videoDrivers = [ "vmware" ];
+  #services.xserver.videoDrivers = [ "vmware" ];
 
   # # Enable the GNOME Desktop Environment.
 services.xserver.displayManager.gdm.enable = true;
