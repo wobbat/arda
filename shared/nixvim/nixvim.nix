@@ -41,108 +41,115 @@
     colorscheme = "dim";
     extraConfigLua = ''
 
-      -- line numbers
-      vim.opt.nu = true
-      vim.opt.relativenumber = true
-      -- Formatting
-      vim.opt.tabstop = 4
-      vim.opt.softtabstop = 4
-      vim.opt.shiftwidth = 4
-      vim.opt.expandtab = true
-      vim.opt.smartindent = true
-      vim.opt.list = true
+          -- extra keymaps
+          im.g.mapleader = " "
+      -- File manager
+      vim.keymap.set("n", "<leader>fb", vim.cmd.Ex)
+      vim.keymap.set("n", "L", "$")
+      vim.keymap.set("n", "H", "_")
 
-      vim.opt.listchars = {
-          space = "⋅",
-          eol = "↴",
-          tab = "▎_",
-          -- tab = "|_>",
-          trail = "•",
-          extends = "❯",
-          precedes = "❮",
-          nbsp = "",
-      }
-      vim.opt.fillchars = {
-          fold = " ",
-          foldsep = " ",
-          foldopen = "",
-          foldclose = "",
-          diff = "╱",
-      }
-      vim.opt.wrap = true
+            -- line numbers
+            vim.opt.nu = true
+            vim.opt.relativenumber = true
+            -- Formatting
+            vim.opt.tabstop = 4
+            vim.opt.softtabstop = 4
+            vim.opt.shiftwidth = 4
+            vim.opt.expandtab = true
+            vim.opt.smartindent = true
+            vim.opt.list = true
 
-      vim.opt.swapfile = false
-      vim.opt.backup = false
-      vim.opt.undofile = true
+            vim.opt.listchars = {
+                space = "⋅",
+                eol = "↴",
+                tab = "▎_",
+                -- tab = "|_>",
+                trail = "•",
+                extends = "❯",
+                precedes = "❮",
+                nbsp = "",
+            }
+            vim.opt.fillchars = {
+                fold = " ",
+                foldsep = " ",
+                foldopen = "",
+                foldclose = "",
+                diff = "╱",
+            }
+            vim.opt.wrap = true
 
-      vim.opt.hlsearch = false
-      vim.opt.incsearch = true
+            vim.opt.swapfile = false
+            vim.opt.backup = false
+            vim.opt.undofile = true
+
+            vim.opt.hlsearch = false
+            vim.opt.incsearch = true
 
 
-      vim.opt.scrolloff = 8
-      vim.opt.cursorline = true
+            vim.opt.scrolloff = 8
+            vim.opt.cursorline = true
 
-      vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'none' })
-      --Fix markdown fenced code blocks
-      vim.cmd("let g:markdown_fenced_languages = ['html', 'php','python', 'javascript', 'js=javascript']")
-      -- theme
-      vim.opt.clipboard = "unnamedplus"
+            vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'none' })
+            --Fix markdown fenced code blocks
+            vim.cmd("let g:markdown_fenced_languages = ['html', 'php','python', 'javascript', 'js=javascript']")
+            -- theme
+            vim.opt.clipboard = "unnamedplus"
 
-      vim.cmd("set signcolumn=no")
+            vim.cmd("set signcolumn=no")
 
-      --vim.opt.spelllang = 'en_us,nl'
-      --vim.opt.spell = true
-      vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#ab8550' })
+            --vim.opt.spelllang = 'en_us,nl'
+            --vim.opt.spell = true
+            vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#ab8550' })
 
-      vim.cmd("colorscheme dim")
-      vim.o.scrolloff = 8;
-      vim.o.cmdheight=0
+            vim.cmd("colorscheme dim")
+            vim.o.scrolloff = 8;
+            vim.o.cmdheight=0
 
-      vim.cmd("let g:vim_markdown_frontmatter = 1")
-      vim.cmd("let g:vim_markdown_toml_frontmatter = 1")
-      vim.cmd("let g:vim_markdown_json_frontmatter = 1")
+            vim.cmd("let g:vim_markdown_frontmatter = 1")
+            vim.cmd("let g:vim_markdown_toml_frontmatter = 1")
+            vim.cmd("let g:vim_markdown_json_frontmatter = 1")
 
-      ---- lualine
-      require('lualine').setup {
-          options = {
-              icons_enabled = false,
-              theme = 'auto',
-              component_separators = { left = ' ', right = ' ' },
-              section_separators = { left = ' ', right = ' ' },
-              disabled_filetypes = {
-                  statusline = {},
-                  winbar = {},
-              },
-              ignore_focus = {},
-              always_divide_middle = true,
-              globalstatus = false,
-              refresh = {
-                  statusline = 1000,
-                  tabline = 1000,
-                  winbar = 1000,
-              }
-          },
-          sections = {
-              lualine_a = { 'mode' },
-              lualine_b = { 'branch', 'diagnostics' },
-              lualine_c = { 'filename' },
-              lualine_x = { "" },
-              lualine_y = { 'diff' },
-              lualine_z = { 'filename' }
-          },
-          inactive_sections = {
-              lualine_a = {},
-              lualine_b = {},
-              lualine_c = { 'filename' },
-              lualine_x = { 'location' },
-              lualine_y = {},
-              lualine_z = {}
-          },
-          tabline = {},
-          winbar = {},
-          inactive_winbar = {},
-          extensions = {}
-      }
+            ---- lualine
+            require('lualine').setup {
+                options = {
+                    icons_enabled = false,
+                    theme = 'auto',
+                    component_separators = { left = ' ', right = ' ' },
+                    section_separators = { left = ' ', right = ' ' },
+                    disabled_filetypes = {
+                        statusline = {},
+                        winbar = {},
+                    },
+                    ignore_focus = {},
+                    always_divide_middle = true,
+                    globalstatus = false,
+                    refresh = {
+                        statusline = 1000,
+                        tabline = 1000,
+                        winbar = 1000,
+                    }
+                },
+                sections = {
+                    lualine_a = { 'mode' },
+                    lualine_b = { 'branch', 'diagnostics' },
+                    lualine_c = { 'filename' },
+                    lualine_x = { "" },
+                    lualine_y = { 'diff' },
+                    lualine_z = { 'filename' }
+                },
+                inactive_sections = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = { 'filename' },
+                    lualine_x = { 'location' },
+                    lualine_y = {},
+                    lualine_z = {}
+                },
+                tabline = {},
+                winbar = {},
+                inactive_winbar = {},
+                extensions = {}
+            }
     '';
   };
 }
