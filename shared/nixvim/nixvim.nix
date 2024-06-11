@@ -42,11 +42,12 @@
     extraConfigLua = ''
 
           -- extra keymaps
-          im.g.mapleader = " "
-      -- File manager
-      vim.keymap.set("n", "<leader>fb", vim.cmd.Ex)
-      vim.keymap.set("n", "L", "$")
-      vim.keymap.set("n", "H", "_")
+          vim.g.mapleader = " "
+     
+         -- File manager
+            vim.keymap.set("n", "<leader>fb", vim.cmd.Ex)
+            vim.keymap.set("n", "L", "$")
+            vim.keymap.set("n", "H", "_")
 
             -- line numbers
             vim.opt.nu = true
