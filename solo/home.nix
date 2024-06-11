@@ -11,6 +11,7 @@
            ../shared/home/starship.nix
            ../shared/home/fish.nix
            ../shared/home/git.nix
+           ../shared/home/tmux.nix
   ];
 
 
