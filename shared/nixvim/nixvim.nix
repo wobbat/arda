@@ -1,4 +1,8 @@
 {
+
+  imports = [
+    ../home/nixvim/dim.nix
+  ];
   programs.nixvim.enable = true;
   programs.nixvim = {
     colorschemes.kanagawa.enable = true;

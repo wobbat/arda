@@ -64,25 +64,26 @@
           ];
         };
       };
-    homeConfigurations = {
-     "wobbat@solo" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-           ./solo/home.nix
-          {
-            home.username = "wobbat";
-            home.homeDirectory = "/home/wobbat";
-            home.stateVersion = "24.05";
-            nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
-  };
-          }
-        ];
+      homeConfigurations = {
+        "wobbat@solo" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+                       inputs.nixvim.homeManagerModules.nixvim
+
+            ./solo/home.nix
+            {
+              home.username = "wobbat";
+              home.homeDirectory = "/home/wobbat";
+              home.stateVersion = "24.05";
+              nixpkgs = {
+                config = {
+                  allowUnfree = true;
+                  allowUnfreePredicate = (_: true);
+                };
+              };
+            }
+          ];
+        };
       };
-    };
-      
     };
 }

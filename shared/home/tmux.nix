@@ -20,6 +20,7 @@
         set -g status-right " "
         set -g message-command-style bg="#151515",fg="#c8c093"
         set -g message-style bg="#151515"
+        set -g default-command fish
         bind-key -n S-Up set-option -g status
         bind-key -n S-Down set-option -g status
         bind-key -n S-Left previous-window

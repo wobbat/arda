@@ -7,11 +7,12 @@
 
 {
   imports = [
-           ../solo/alacritty.nix
+           ../shared/home/alacritty.nix
            ../shared/home/starship.nix
            ../shared/home/fish.nix
            ../shared/home/git.nix
            ../shared/home/tmux.nix
+           ../shared/nixvim/nixvim.nix
   ];
 
 
@@ -19,6 +20,8 @@
   home.packages = with pkgs; [
     eza
     nixfmt-rfc-style
+    semgrep
+    inconsolata-nerdfont
   ];
   
   # trying this to see if the vars are set correctly?
