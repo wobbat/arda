@@ -1,5 +1,5 @@
 {
-    programs.starship = {
+    programs.tmux = {
     enable = true;
     extraConfig = ''
         unbind C-b
