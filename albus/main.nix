@@ -19,7 +19,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "ernie"; # Define your hostname.
+  networking.hostName = "albus"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -58,12 +58,17 @@
   #services.xserver.videoDrivers = [ "vmware" ];
 
   # # Enable the GNOME Desktop Environment.
-services.xserver.displayManager.gdm.enable = true;
-  #
-#  services.xserver.displayManager.lightdm.enable = true;
-#  services.xserver.desktopManager.budgie.enable = true;
-services.xserver.displayManager.gdm.wayland = true;
-services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.windowManager.i3.enable = true;
+
+  services.displayManager = {
+    defaultSession = "none+i3";
+  };
+
+# services.xserver.displayManager.gdm.enable = true; #
+ #services.xserver.displayManager.lightdm.enable = true;
+ #services.xserver.desktopManager.cinnamon.enable = true;
+#services.xserver.displayManager.gdm.wayland = true;
+# services.xserver.desktopManager.gnome.enable = true;
 
   #  services.xserver.displayManager.sddm.enable = true;
   #  services.xserver.desktopManager.plasma6.enable = true;

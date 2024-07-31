@@ -6,6 +6,7 @@
     [ # Include the results of the hardware scan.
       ../shared/home/alacritty.nix
       ../shared/home/fish.nix
+      ../shared/home/i3.nix
     ];
 
   home.username = "wobbat";
@@ -59,7 +60,15 @@
   programs.git = {
     enable = true;
     userName = "wobbat";
-    userEmail = "wobbat@proton.me";
+    userEmail = "mail@wobbat.com";
+  };
+  
+   programs.emacs = {
+    enable = true;
+    package = pkgs.emacs;  # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
+    extraConfig = ''
+      (setq standard-indent 2)
+    '';
   };
 
   programs.starship = {
