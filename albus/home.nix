@@ -52,6 +52,8 @@
     btop
     iotop
     iftop 
+    dmenu
+    i3status
 
     #other
     todoist-electron
