@@ -14,10 +14,8 @@
     ];
 
   # Bootloader.
- # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "frodo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -58,10 +56,17 @@
   #services.xserver.videoDrivers = [ "vmware" ];
 
   # # Enable the GNOME Desktop Environment.
-  services.xserver.windowManager.i3.enable = true;
+  #services.xserver.windowManager.i3.enable = true;
+
+  services.xserver.windowManager.qtile = {
+  enable = true;
+  extraPackages = python3Packages: with python3Packages; [
+    qtile-extras
+  ];
+};
 
   services.displayManager = {
-    defaultSession = "none+i3";
+    defaultSession = "qtile";
   };
 
 # services.xserver.displayManager.gdm.enable = true; #
@@ -83,10 +88,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Disable sound since we do not need it in a vm?
-  sound.enable = false;
-  hardware.pulseaudio.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.fish.enable = true;

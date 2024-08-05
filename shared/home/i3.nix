@@ -24,7 +24,6 @@ in
         inner = 10;
         outer = 5;
       };
-      smartBorders = "on";
       keybindings = lib.mkOptionDefault {
         "${mod}+p" = "exec ${pkgs.dmenu}/bin/dmenu_run";
         "${mod}+x" = "exec sh -c '${pkgs.maim}/bin/maim -s | xclip -selection clipboard -t image/png'";

@@ -1,58 +1,53 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ../shared/home/alacritty.nix
-      ../shared/home/fish.nix
-      ../shared/home/i3.nix
-      ../shared/nixvim/nixvim.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ../shared/home/alacritty.nix
+    ../shared/home/fish.nix
+    ../shared/home/i3.nix
+    ../shared/nixvim/nixvim.nix
+  ];
 
   home.username = "wobbat";
   home.homeDirectory = "/home/wobbat";
 
-  # link the configuration file in current directory to the specified location in home directory
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
-
-  # encode the file content in nix configuration file directly
-  # home.file.".xxx".text = ''
-  #     xxx
-  # '';
-
-   # set cursor size and dpi for 4k monitor
+  # set cursor size and dpi for 4k monitor
   xresources.properties = {
     "Xcursor.size" = 8;
-    # "Xft.dpi" = 172;
+     "Xft.dpi" = 172;
   };
 
-   home.pointerCursor = {
-      name = "Adwaita";
-      package = pkgs.gnome.adwaita-icon-theme;
-      size = 24;
-    };
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+  };
+
+   home.file.qtile_config = {
+     source = ./qtile/config.py;
+     target = ".config/qtile/config.py";
+   };
 
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
     eza
-    
+
     #security
-    nmap 
-    
+    nmap
+
     #utils
     file
     which
     btop
     iotop
-    iftop 
+    iftop
     dmenu
     i3status
 
@@ -65,10 +60,15 @@
     userName = "wobbat";
     userEmail = "mail@wobbat.com";
   };
-  
-   programs.emacs = {
+
+  programs.autorandr = {
     enable = true;
-    package = pkgs.emacs;  # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
+  };
+
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs; # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
     extraConfig = ''
       (setq standard-indent 2)
     '';
@@ -78,11 +78,11 @@
     enable = true;
     # Configuration written to ~/.config/starship.toml
     settings = {
-    format = ''
-$time $directory
-$character
-'';
-    right_format = ''$all'';
+      format = ''
+        $time $directory
+        $character
+      '';
+      right_format = ''$all'';
 
       # add_newline = false;
 
@@ -100,7 +100,7 @@ $character
         format = "[$time](white bold)";
         time_format = "%H:%M";
       };
-            
+
       directory = {
         style = "white bold";
       };

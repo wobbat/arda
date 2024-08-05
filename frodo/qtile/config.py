@@ -1,9 +1,9 @@
-from libqtile import bar, layout, qtile, widget
+from libqtile import bar, layout, qtile, widget, extension
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
-mod = "mod4"
+mod = "mod1"
 terminal = guess_terminal()
 
 keys = [
@@ -52,6 +52,16 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
+    Key([mod], 'r', lazy.run_extension(extension.DmenuRun(
+        dmenu_prompt=">",
+        dmenu_font="Jetbrains Mono-14",
+        background="#15181a",
+        foreground="#00ff00",
+        selected_background="#079822",
+        selected_foreground="#fff",
+        dmenu_height=24,  # Only supported by some dmenu forks
+    ))),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -95,7 +105,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+  #  layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -111,8 +121,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="Jetbrains Mono",
-    fontsize=15,
+    font="sans",
+    fontsize=30,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -121,25 +131,24 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press <M-r> to spawn", foreground="#d75f5f"),
+                widget.CurrentLayout(),
+              #  widget.Prompt(),
+              #  widget.WindowName(),
+              #  widget.Chord(
+              #      chords_colors={
+              #          "launch": ("#ff0000", "#ffffff"),
+              #      },
+              #      name_transform=lambda name: name.upper(),
+              #  ),
+              #  widget.TextBox("default config", name="default"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+              #  widget.Systray(),
+               # widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+               # widget.QuickExit(),
             ],
-            24,
+            30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),

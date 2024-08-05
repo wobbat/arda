@@ -3,7 +3,7 @@
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
         vscode
-        inputs.helix.packages."${pkgs.system}".helix
+        #inputs.helix.packages."${pkgs.system}".helix
         burpsuite
         git
         firefox
@@ -15,6 +15,7 @@
         gnomeExtensions.tactile
         nixfmt-rfc-style
         google-chrome
+        arandr
   ];
 
 }
