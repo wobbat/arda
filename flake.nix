@@ -43,20 +43,20 @@
             }
           ];
         };
-        sam = nixpkgs.lib.nixosSystem {
+        meriadoc = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = {
             inherit inputs;
           };
 
           modules = [
-            ./sam/main.nix
+            ./meriadoc/main.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.wobbat.imports = [
-                ./sam/home.nix
+                ./meriadoc/home.nix
                 inputs.nixvim.homeManagerModules.nixvim
               ];
 
