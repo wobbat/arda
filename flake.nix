@@ -43,6 +43,28 @@
             }
           ];
         };
+        sam = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+
+          modules = [
+            ./sam/main.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.wobbat.imports = [
+                ./sam/home.nix
+                inputs.nixvim.homeManagerModules.nixvim
+              ];
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+            }
+          ];
+        };
         albus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
