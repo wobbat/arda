@@ -42,9 +42,9 @@
               # arguments to home.nix
             }
           ];
-        }
+        };
         sam = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          system = "aarch64-linux";
           specialArgs = {
             inherit inputs;
           };
@@ -65,7 +65,6 @@
             }
           ];
         };
-;
         albus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
