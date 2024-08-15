@@ -9,7 +9,7 @@
 
   imports = [
     # Include the results of the hardware scan.
-    ../shared/home/alacritty.nix
+    ./alacritty.nix
     ../shared/home/fish.nix
     ../shared/home/i3.nix
     ../shared/nixvim/nixvim.nix
@@ -19,10 +19,10 @@
   home.homeDirectory = "/home/wobbat";
 
   # set cursor size and dpi for 4k monitor
-  xresources.properties = {
-    "Xcursor.size" = 8;
-     "Xft.dpi" = 172;
-  };
+ # xresources.properties = {
+  #  "Xcursor.size" = 8;
+   #  "Xft.dpi" = 172;
+  #};
 
   home.pointerCursor = {
     name = "Adwaita";
