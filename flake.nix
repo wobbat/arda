@@ -43,20 +43,20 @@
             }
           ];
         };
-        meriadoc = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
+        theoden = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
           };
 
           modules = [
-            ./meriadoc/main.nix
+            ./theoden/main.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.wobbat.imports = [
-                ./meriadoc/home.nix
+                ./theoden/home.nix
                 inputs.nixvim.homeManagerModules.nixvim
               ];
 
