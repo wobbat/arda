@@ -11,7 +11,7 @@
     # Include the results of the hardware scan.
     ./alacritty.nix
     ../shared/home/fish.nix
-    ../shared/home/i3.nix
+    #../shared/home/i3.nix
     ../shared/nixvim/nixvim.nix
   ];
 
@@ -35,6 +35,10 @@
      target = ".config/qtile/config.py";
    };
 
+   home.file.awesome_config = {
+     source = ./awesome/rc.lua;
+     target = ".config/awesome/rc.lua";
+   };
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
     eza
@@ -53,6 +57,8 @@
 
     #other
     todoist-electron
+    rxvt-unicode
+    xorg.xfontsel
   ];
 
   programs.git = {

@@ -38,7 +38,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("urxvt"), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -49,16 +49,14 @@ keys = [
         desc="Toggle fullscreen on the focused window",
     ),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     Key([mod], 'r', lazy.run_extension(extension.DmenuRun(
         dmenu_prompt=">",
-        dmenu_font="Jetbrains Mono-14",
+        dmenu_font="Inconsolata Bold-14",
         background="#15181a",
         foreground="#00ff00",
-        selected_background="#079822",
+        selected_background="q #079822",
         selected_foreground="#fff",
         dmenu_height=24,  # Only supported by some dmenu forks
     ))),
@@ -106,12 +104,12 @@ for i in groups:
 
 layouts = [
   #  layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-     layout.MonadTall(),
+    layout.MonadTall(margin=10,border_normal="#151515",border_focus="#d79921", border_width=4),
+    layout.Max(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -121,7 +119,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="Inconsolata Bold",
     fontsize=30,
     padding=3,
 )
@@ -149,6 +147,7 @@ screens = [
                # widget.QuickExit(),
             ],
             30,
+            background="#202020",
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),

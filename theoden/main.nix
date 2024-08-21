@@ -11,7 +11,7 @@
     [ # Include the results of the hardware scan.
       ./hardware.nix
       ./packages.nix
-      ./battery.nix
+#      ./battery.nix
     ];
 
   # Bootloader.
@@ -53,12 +53,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # testing this out to see if this improves?
-  #services.xserver.videoDrivers = [ "vmware" ];
-
-  # # Enable the GNOME Desktop Environment.
-  #services.xserver.windowManager.i3.enable = true;
-
   services.xserver.windowManager.qtile = {
   enable = true;
   extraPackages = python3Packages: with python3Packages; [
@@ -66,17 +60,23 @@
   ];
 };
 
-  services.displayManager = {
-    defaultSession = "qtile";
+ services.xserver.windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        # add any lua packages required by your configuration here
+      ];
+
+    };
+
+ services.displayManager = {
+     defaultSession = "none+awesome";
   };
-
 # services.xserver.displayManager.gdm.enable = true; #
- #services.xserver.displayManager.lightdm.enable = true;
+ #services.xserver.displayManager.sddm.enable = true;
  #services.xserver.desktopManager.cinnamon.enable = true;
-#services.xserver.displayManager.gdm.wayland = true;
-# services.xserver.desktopManager.gnome.enable = true;
+ #services.xserver.desktopManager.gnome.enable = true;
 
-  #  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
   #  services.xserver.desktopManager.plasma6.enable = true;
 
 
@@ -98,7 +98,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
     packages = with pkgs; [
-    #  thunderbird
+    picom
+    htop
+    feh
     ];
   };
 
@@ -107,6 +109,11 @@
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+   services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.deviceSection = ''
+    Option "DRI" "2"
+    Option "TearFree" "true"
+  '';
 
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -121,6 +128,12 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  boot.kernelParams = [
+    "i915.force_probe=a7a1"  
+    "i915.enable_psr=0"
+    ];
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
