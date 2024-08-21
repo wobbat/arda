@@ -19,7 +19,6 @@
 	};
 
   ### KERNEL
-  boot.kernelParams = [ "i915.force_probe=a7a1" ];
 
   ### HWP
 #  systemd.tmpfiles.rules = [

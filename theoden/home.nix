@@ -39,6 +39,11 @@
      source = ./awesome/rc.lua;
      target = ".config/awesome/rc.lua";
    };
+
+    home.file.awesome_theme= {
+     source = ./awesome/theme.lua;
+     target = ".config/awesome/theme.lua";
+   };
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
     eza
