@@ -21,21 +21,42 @@
     }:
     {
       nixosConfigurations = {
-        bert = nixpkgs.lib.nixosSystem {
+        frodo = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
           };
 
           modules = [
-            ./bert/main.nix
+            ./frodo/main.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              #home-manager.users.wobbat = import ./bert/home.nix;
               home-manager.users.wobbat.imports = [
-                ./bert/home.nix
+                ./frodo/home.nix
+                inputs.nixvim.homeManagerModules.nixvim
+              ];
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+            }
+          ];
+        };
+        theoden = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+
+          modules = [
+            ./theoden/main.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.wobbat.imports = [
+                ./theoden/home.nix
                 inputs.nixvim.homeManagerModules.nixvim
               ];
 
