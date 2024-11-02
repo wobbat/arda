@@ -13,6 +13,7 @@
         disable_hyprland_logo = true;
       };
 
+      
       decoration = {
         rounding = 2;
       };

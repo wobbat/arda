@@ -45,7 +45,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
+
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -83,9 +84,9 @@ awful.layout.layouts = {
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
+--    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+--    { "manual", terminal .. " -e man awesome" },
+--    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", function() awesome.quit() end },
 }
@@ -108,6 +109,11 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+bat_widget =  awful.widget.watch('cat /sys/class/power_supply/BAT0/capacity', 60, function(widget, stdout)
+                  local text = stdout .. " gvd"
+                  widget:set_text(text)
+                  return 
+            end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -185,7 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        -- buttons = taglist_buttons
     }
 
     -- Create a tasklist widget
@@ -196,26 +202,53 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, bg = beautiful.bg_focus, visible = false})
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+        expand = "none",
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
+            -- mylauncher,
+            mytextclock, 
         },
-        s.mytasklist, -- Middle widget
+        { -- middle widgets
+        layout = wibox.layout.fixed.horizontal,
+        s.mytaglist,
+        },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
+            -- wibox.widget.systray(),
+            bat_widget,
+            -- s.mylayoutbox,
         },
     }
+
+    s.tpb = awful.wibar({ position = "top", screen = s, bg = "#00000000", fg = "#000000", visible=false})
+
+    -- Add widgets to the wibox
+    s.tpb:setup {
+        layout = wibox.layout.align.horizontal,
+        expand = "none",
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            -- mylauncher,
+            mytextclock, 
+        },
+        { -- middle widgets
+        layout = wibox.layout.fixed.horizontal,
+        s.mytaglist,
+        },
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            -- wibox.widget.systray(),
+            mytextclock,
+            -- s.mylayoutbox,
+        },
+    }
+    
+
 end)
 -- }}}
 
@@ -227,10 +260,16 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+local function toggle_bar()
+    for s in screen do
+        s.mywibox.visible = not s.mywibox.visible
+   end
+end
+
+
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
@@ -253,6 +292,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
+    awful.key({ modkey,           }, "b", function () toggle_bar() end,
+              {description = "toggle bar", group = "awesome"}),
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
@@ -325,7 +366,7 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "d", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -336,7 +377,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey,    }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -534,24 +575,24 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c) : setup {
         { -- Left
-            awful.titlebar.widget.iconwidget(c),
+            -- awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
             layout  = wibox.layout.fixed.horizontal
         },
         { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
+            -- { -- Title
+            --     align  = "center",
+            --     widget = awful.titlebar.widget.titlewidget(c)
+            -- },
             buttons = buttons,
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
+            -- awful.titlebar.widget.floatingbutton (c),
+            -- awful.titlebar.widget.maximizedbutton(c),
+            -- awful.titlebar.widget.stickybutton   (c),
+            -- awful.titlebar.widget.ontopbutton    (c),
+            -- awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
@@ -565,4 +606,132 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
+
+
+local function is_current_tag_empty()
+    local t = awful.screen.focused().selected_tag
+    if not t then return false end
+    local clients = t:clients()
+    if next(clients) == nil then
+        -- if ntf then naughty.destroy(ntf) end
+        -- ntf = naughty.notify({
+        --     title = "Empty!",
+        --     text = awful.tag.selected().name,
+        --     timeout = 2})
+        return true 
+    end 
+    -- if ntf then naughty.destroy(ntf) end
+    -- ntf = naughty.notify({
+    --     title = "not Empty?",
+    --     text = awful.tag.selected().name,
+    --     timeout = 2})
+    return false
+end
+
+autorun = true
+autorunApps =
+{
+   "picom",
+}
+if autorun then
+   for app = 1, #autorunApps do
+       awful.util.spawn(autorunApps[app])
+   end
+end
+
+
+
+
+
+local function toggle_transparent_bar()
+    -- set_border()
+    for s in screen do
+        s.mywibox.bg = "#15151500"
+        -- beautiful.bg_focus = "#15151500"
+        s.mywibox.fg = "#151515"
+        beautiful.taglist_fg_focus = "#ada59b"
+        -- beautiful.taglist_bg_focus = "#404040"
+
+   end
+end
+
+local function show_solid_bar()
+    -- set_border()
+    for s in screen do
+        -- s.mywibox.visible = true
+        -- s.tpb.visible = false
+        s.mywibox.bg = "#151515"
+        s.mywibox.fg = "#aaaaaa"
+        beautiful.taglist_fg_focus = "#FFFFFF"
+        -- beautiful.taglist_bg_focus = "#FFFFFF00"
+   end
+end
+
+
+tag.connect_signal("property::selected",
+    function(t)
+        if awful.tag.selected() then
+            if is_current_tag_empty() then 
+                toggle_transparent_bar()
+                os.execute("feh --bg-scale ~/Pictures/wallpapers/one.jpg")
+            else
+                show_solid_bar()     
+                os.execute("feh --bg-scale ~/Pictures/wallpapers/151515.png")
+            end
+            -- if ntf then naughty.destroy(ntf) end
+            -- ntf = naughty.notify({
+            --     title = "Tag Switched",
+            --     text = awful.tag.selected().name,
+            --     timeout = 2})
+            -- first = true
+        end
+    end)
+
+
+    client.connect_signal("focus",
+    function(t)
+        if awful.tag.selected() then
+            if is_current_tag_empty() then 
+                toggle_transparent_bar()
+                os.execute("feh --bg-scale ~/Pictures/wallpapers/one.jpg")
+            else
+                show_solid_bar()     
+                os.execute("feh --bg-scale ~/Pictures/wallpapers/151515.png")
+            end
+        end
+    end)
+
+    client.connect_signal("unmanage",
+    function(t)
+        if awful.tag.selected() then
+            if is_current_tag_empty() then 
+                toggle_transparent_bar()
+                os.execute("feh --bg-scale ~/Pictures/wallpapers/one.jpg")
+            else
+                show_solid_bar()     
+                os.execute("feh --bg-scale ~/Pictures/wallpapers/151515.png")
+            end
+        end
+    end)
+
+
+-- Remove border when only one window
+local function set_border(c)
+    -- if ntf then naughty.destroy(ntf) end
+    --     ntf = naughty.notify({
+    --         title = "Debug:",
+    --         text = "Called set_border",
+    --         timeout = 2})
+    local s = awful.screen.focused()
+    if c.maximized
+        or (#s.tiled_clients == 1 and not c.floating)
+        or (s.selected_tag and s.selected_tag.layout.name == 'max')
+    then
+        c.border_width = 0
+    else
+        c.border_width = beautiful.border_width
+    end
+end
+
+client.connect_signal("focus", set_border)
+client.connect_signal("unmanage", set_border)

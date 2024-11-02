@@ -11,7 +11,7 @@
     [ # Include the results of the hardware scan.
       ./hardware.nix
       ./packages.nix
-#      ./battery.nix
+      ./battery.nix
     ];
 
   # Bootloader.
