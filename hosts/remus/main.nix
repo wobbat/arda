@@ -87,7 +87,6 @@
     swaybg          # Background setter (already in your hyprland config)
     brightnessctl   # Brightness control
     playerctl       # Media control
-    wpctl           # Audio control (part of pipewire)
     
     # Your existing packages
     htop
