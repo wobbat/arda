@@ -268,6 +268,7 @@ config.colors = {
 }
 
 return config
-'';
+    '';
+
   };
 }
