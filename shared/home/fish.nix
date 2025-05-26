@@ -87,10 +87,9 @@ alias la="eza -a --group-directories-first"
 alias lal="eza -la --group-directories-first"
 alias lsl="eza -l --group-directories-first"
 alias ls="eza --group-directories-first"
-#alias tm="tmux ls && read tmux_session && tmux attach -t ${tmux_session:-default} || tmux new -s ${tmux_session:-default}"
 alias tm="tmux new -As0"
 alias tmc="tmux new -Ascode"
-alias nos="sudo nixos-rebuild switch --flake /home/wobbat/wobbix"
+alias nos="sudo nixos-rebuild switch --flake /home/wobbat/.wobbix"
 
 starship init fish | source
 zoxide init fish | source
