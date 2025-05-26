@@ -11,9 +11,9 @@
     # Include the results of the hardware scan.
     ./alacritty.nix
     ./hyprland.nix
-    ../shared/home/fish.nix
+    ../../shared/home/fish.nix
     #../shared/home/i3.nix
-    ../shared/nixvim/nixvim.nix
+    #../shared/nixvim/nixvim.nix
   ];
 
   home.username = "wobbat";
