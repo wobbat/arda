@@ -1,9 +1,7 @@
 {
   programs.wezterm = {
     enable = true;
-    
-        extraConfig = ''
-
+    extraConfig = ''
         -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
@@ -270,7 +268,6 @@ config.colors = {
 }
 
 return config
-
-        '';
+'';
   };
 }
