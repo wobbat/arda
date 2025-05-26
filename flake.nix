@@ -1,7 +1,6 @@
 {
   description = "NixOS configuration";
 
-
   nixConfig = {
     extra-substituters = [ "https://helix.cachix.org" ];
     extra-trusted-public-keys = [ "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=" ];
@@ -11,6 +10,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     helix.url = "github:helix-editor/helix/master";
     wbp.url = "github:wobbat/wobbix_packages";
+    zenbrowser.url = "github:0xc000022070/zen-browser-flake";
+    zenbrowser.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # Neovim
@@ -104,6 +105,8 @@
               home-manager.useUserPackages = true;
               home-manager.users.wobbat.imports = [
                 ./hosts/remus/home.nix
+                inputs.zenbrowser.homeModules.beta
+
               ];
 
               # Optionally, use home-manager.extraSpecialArgs to pass
@@ -116,7 +119,7 @@
         "wobbat@solo" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-                       inputs.nixvim.homeManagerModules.nixvim
+            inputs.nixvim.homeManagerModules.nixvim
 
             ./solo/home.nix
             {

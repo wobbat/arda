@@ -12,6 +12,7 @@
     ../../modules/hyprland.nix
     ../../modules/wezterm.nix
     ../../modules/fish.nix
+    ../../modules/helix.nix
   ];
 
   home.username = "wobbat";
@@ -55,6 +56,11 @@
     enable = true;
   };
 
+  programs.zen-browser = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    # Add any other native connectors here
+  };
 
   programs.starship = {
     enable = true;
