@@ -9,22 +9,13 @@
 
   imports = [
     # Include the results of the hardware scan.
-    #./alacritty.nix
-    ./hyprland.nix
-    ./wezterm.nix
-    ../../shared/home/fish.nix
-    #../shared/home/i3.nix
-    #../shared/nixvim/nixvim.nix
+    ../../modules/hyprland.nix
+    ../../modules/wezterm.nix
+    ../../modules/fish.nix
   ];
 
   home.username = "wobbat";
   home.homeDirectory = "/home/wobbat";
-
-  # set cursor size and dpi for 4k monitor
- # xresources.properties = {
-  #  "Xcursor.size" = 8;
-   #  "Xft.dpi" = 172;
-  #};
 
   home.pointerCursor = {
     name = "Adwaita";
@@ -32,21 +23,6 @@
     size = 24;
   };
 
-   # Commented out X11 window manager configs since switching to Hyprland
-   # home.file.qtile_config = {
-   #   source = ./qtile/config.py;
-   #   target = ".config/qtile/config.py";
-   # };
-
-   # home.file.awesome_config = {
-   #   source = ./awesome/rc.lua;
-   #   target = ".config/awesome/rc.lua";
-   # };
-
-   # home.file.awesome_theme= {
-   #   source = ./awesome/theme.lua;
-   #   target = ".config/awesome/theme.lua";
-   # };
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
     eza
@@ -80,14 +56,6 @@
   };
 
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs; # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
-    extraConfig = ''
-      (setq standard-indent 2)
-    '';
-  };
-
   programs.starship = {
     enable = true;
     # Configuration written to ~/.config/starship.toml
@@ -118,7 +86,6 @@
       directory = {
         style = "white bold";
       };
-      # package.disabled = true;
     };
   };
 

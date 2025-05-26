@@ -104,7 +104,6 @@
               home-manager.useUserPackages = true;
               home-manager.users.wobbat.imports = [
                 ./hosts/remus/home.nix
-                inputs.nixvim.homeManagerModules.nixvim
               ];
 
               # Optionally, use home-manager.extraSpecialArgs to pass

@@ -1,15 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
 
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware.nix  # Generate this with: nixos-generate-config
+    [ 
+      ./hardware.nix  
       ./packages.nix
     ];
 
@@ -24,19 +20,11 @@
   networking.hostName = "remus"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
-
-  #VM
-  virtualisation.vmware.guest.enable = true;
-
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -61,8 +49,6 @@
   
   # Enable polkit for authentication
   security.polkit.enable = true;
-  #  services.xserver.desktopManager.plasma6.enable = true;
-
 
   # Configure keymap for Wayland
   console.keyMap = "us";
@@ -97,8 +83,7 @@
   };
 
   # Install firefox.
-  # programs.firefox.enable = true;
-
+  programs.firefox.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
@@ -111,13 +96,6 @@
     pulse.enable = true;
   };
   
-  # Remove X11 video drivers (not needed for Wayland)
-  # services.xserver.videoDrivers = [ "intel" ];
-  # services.xserver.deviceSection = ''
-  #   Option "DRI" "2"
-  #   Option "TearFree" "true"
-  # '';
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
