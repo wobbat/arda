@@ -13,7 +13,7 @@
       ./packages.nix
     ];
 
-    nix.binaryCaches = [
+    nix.settings.substituters = [
     "https://cache.nixos.org"
   ];
 
