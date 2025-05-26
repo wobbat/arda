@@ -9,7 +9,7 @@
 
   imports =
     [ # Include the results of the hardware scan.
-      # ./hardware.nix  # Generate this with: nixos-generate-config
+      ./hardware.nix  # Generate this with: nixos-generate-config
       ./packages.nix
     ];
 
@@ -82,11 +82,9 @@
     shell = pkgs.fish;
     packages = with pkgs; [
     # Wayland essentials
-    wofi            # Application launcher (replaces rofi for Wayland)
+    rofi            # Application launcher (replaces rofi for Wayland)
     wezterm         # Terminal (as specified in your hyprland config)
     swaybg          # Background setter (already in your hyprland config)
-    brightnessctl   # Brightness control
-    playerctl       # Media control
     
     # Your existing packages
     htop
