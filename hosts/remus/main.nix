@@ -1,15 +1,19 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   nixpkgs.config.allowUnfree = true;
 
-  imports =
-    [ 
-      ./hardware.nix  
-      ./packages.nix
-    ];
+  imports = [
+    ./hardware.nix
+    ./packages.nix
+  ];
 
-    nix.settings.substituters = [
+  nix.settings.substituters = [
     "https://cache.nixos.org"
   ];
 
@@ -22,6 +26,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -43,16 +49,17 @@
 
   # Enable Wayland and Hyprland
   programs.hyprland.enable = true;
-  
+
   # Enable XWayland for X11 app compatibility
   programs.xwayland.enable = true;
-  
+
   # Enable polkit for authentication
   security.polkit.enable = true;
+  services.flatpak.enable = true;
 
   # Configure keymap for Wayland
   console.keyMap = "us";
-  
+
   # Optional: Keep X11 keymap for XWayland apps
   services.xserver.xkb = {
     layout = "us";
@@ -68,25 +75,31 @@
   users.users.wobbat = {
     isNormalUser = true;
     description = "stan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
-    # Wayland essentials
-    rofi            # Application launcher (replaces rofi for Wayland)
-    wezterm         # Terminal (as specified in your hyprland config)
-    swaybg          # Background setter (already in your hyprland config)
-    
-    # Your existing packages
-    htop
-    feh
+      # Wayland essentials
+      rofi # Application launcher (replaces rofi for Wayland)
+      wezterm # Terminal (as specified in your hyprland config)
+      swaybg # Background setter (already in your hyprland config)
+
+      # Your existing packages
+      htop
+      feh
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # Audio support for Wayland
   security.rtkit.enable = true;
   services.pipewire = {
@@ -95,7 +108,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -111,10 +123,14 @@
   # services.openssh.enable = true;
 
   boot.kernelParams = [
-    "i915.force_probe=a7a1"  
+    "i915.force_probe=a7a1"
     "i915.enable_psr=0"
-    ];
+  ];
 
+  environment.variables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    GDK_SCALE = "1.5"; # Adjust this value to your desired scale (e.g. 1.25, 1.5, 2)
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
