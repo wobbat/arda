@@ -19,8 +19,6 @@
 
   services.vmwareGuest.enable = true;
 
-  services.vmwareGuest.headless = false;
-
   networking.hostName = "fawkes"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
