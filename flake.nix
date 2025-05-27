@@ -114,6 +114,29 @@
             }
           ];
         };
+        fawkes = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+
+          modules = [
+            ./hosts/fawkes/main.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.wobbat.imports = [
+                ./hosts/remus/home.nix
+                inputs.zenbrowser.homeModules.beta
+
+              ];
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+            }
+          ];
+        };
       };
       homeConfigurations = {
         "wobbat@solo" = inputs.home-manager.lib.homeManagerConfiguration {
