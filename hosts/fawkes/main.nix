@@ -76,10 +76,6 @@
   # Configure keymap for Wayland
   console.keyMap = "us";
 
-  # Optional: Keep X11 keymap for XWayland apps
-    services.xserver.enable = true;
-
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
