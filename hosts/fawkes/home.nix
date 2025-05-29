@@ -24,12 +24,12 @@
     size = 24;
   };
 
-     home.file.awesome_config = {
+  home.file.awesome_config = {
      source = ../modules/awesome/rc.lua;
      target = ".config/awesome/rc.lua";
    };
 
-    home.file.awesome_theme= {
+  home.file.awesome_theme= {
      source = ../modules/awesome/theme.lua;
      target = ".config/awesome/theme.lua";
    };
