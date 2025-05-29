@@ -125,7 +125,7 @@
  services.xserver.displayManager.lightdm.enable = true;
  services.xserver.windowManager.awesome.enable = true;
 
-  services.displayManager.defaultSession = "awesome";
+  services.displayManager.defaultSession = "none+awesome";
 
 
 
