@@ -13,6 +13,7 @@
     ../../modules/wezterm.nix
     ../../modules/fish.nix
     ../../modules/helix.nix
+    ../../modules/rofi.nix
   ];
 
   home.username = "wobbat";
@@ -56,10 +57,15 @@
     enable = true;
   };
 
-  programs.zen-browser = {
+  programs.chromium = {
     enable = true;
-    nativeMessagingHosts = [ pkgs.firefoxpwa ];
-    # Add any other native connectors here
+    package = pkgs.google-chrome.override {
+      commandLineArgs = [
+        "--ozone-platform=wayland"
+        "--enable-features=WaylandWindowDecorations"
+        "--force-device-scale-factor=1.5"
+      ];
+    };
   };
 
   programs.starship = {

@@ -14,6 +14,7 @@
     git
     firefox
     wget
+    bluetui
     python3
     jetbrains-mono
     dtrx
