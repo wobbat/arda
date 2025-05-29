@@ -66,6 +66,8 @@
     variant = "";
     options = "caps:escape";
   };
+    services.xserver.enable = true;
+
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -122,6 +124,33 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  services.xserver.windowManager.qtile = {
+  enable = true;
+  extraPackages = python3Packages: with python3Packages; [
+    qtile-extras
+  ];
+};
+
+  services.displayManager = {
+    defaultSession = "qtile";
+  };
+
+# services.xserver.displayManager.gdm.enable = true; #
+ #services.xserver.displayManager.lightdm.enable = true;
+ #services.xserver.desktopManager.cinnamon.enable = true;
+#services.xserver.displayManager.gdm.wayland = true;
+# services.xserver.desktopManager.gnome.enable = true;
+
+  #  services.xserver.displayManager.sddm.enable = true;
+  #  services.xserver.desktopManager.plasma6.enable = true;
+
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+    options = "caps:escape";
+  };
 
     boot.initrd.kernelModules = [ "vmwgfx" ];
 

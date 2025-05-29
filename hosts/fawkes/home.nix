@@ -24,6 +24,21 @@
     size = 24;
   };
 
+     home.file.awesome_config = {
+     source = ../modules/awesome/rc.lua;
+     target = ".config/awesome/rc.lua";
+   };
+
+    home.file.awesome_theme= {
+     source = ../modules/awesome/theme.lua;
+     target = ".config/awesome/theme.lua";
+   };
+
+      home.file.qtile_config = {
+     source = ../modules/qtile/config.py;
+     target = ".config/qtile/config.py";
+   };
+
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
     eza
