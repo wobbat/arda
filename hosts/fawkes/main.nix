@@ -63,11 +63,6 @@
   console.keyMap = "us";
 
   # Optional: Keep X11 keymap for XWayland apps
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    options = "caps:escape";
-  };
     services.xserver.enable = true;
 
 
