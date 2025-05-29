@@ -24,20 +24,8 @@
     size = 24;
   };
 
-  home.file.awesome_config = {
-     source = ../../../hosts/fawkes/modules/awesome/rc.lua;
-     target = "/home/wobbat/.config/awesome/rc.lua";
-   };
+   xdg.configFile."qtile/config.py".source = ./modules/qtile/config.py;
 
-  home.file.awesome_theme= {
-     source = ./modules/awesome/theme.lua;
-     target = "/home/wobbat/.config/awesome/theme.lua";
-   };
-
-      home.file.qtile_config = {
-     source = ../../../hosts/fawkes/modules/qtile/config.py;
-     target = ".config/qtile/config.py";
-   };
 
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
