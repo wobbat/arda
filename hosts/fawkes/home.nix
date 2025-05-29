@@ -55,6 +55,15 @@
     userEmail = "mail@wobbat.com";
   };
 
+   programs.chromium = {
+    enable = true;
+    package = pkgs.google-chrome.override {
+      commandLineArgs = [
+        "--ozone-platform=x11"
+      ];
+    };
+  };
+
   programs.autorandr = {
     enable = true;
   };
