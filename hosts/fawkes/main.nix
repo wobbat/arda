@@ -122,10 +122,14 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  boot.kernelParams = [
-    "i915.force_probe=a7a1"
-    "i915.enable_psr=0"
-  ];
+
+    boot.initrd.kernelModules = [ "vmwgfx" ];
+
+  # Enable OpenGL (3D acceleration)
+  hardware.opengl.enable = true;
+
+  # Explicitly use the vmware video driver for X/DRM
+  services.xserver.videoDrivers = [ "vmware" ];
 
   systemd.services.vmtoolsd = {
     description = "VMware Tools Daemon";
