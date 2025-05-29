@@ -9,7 +9,7 @@
 
   imports = [
     # Include the results of the hardware scan.
-    ../../modules/hyprland.nix
+    ../modules/hyprland.nix
     ../../modules/wezterm.nix
     ../../modules/fish.nix
     ../../modules/helix.nix
