@@ -42,6 +42,7 @@
     iftop
     dmenu
     i3status
+    firefox-beta-bin
 
     #other
     todoist-electron
