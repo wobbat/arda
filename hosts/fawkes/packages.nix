@@ -29,8 +29,8 @@
     zoxide
     steam-run
       mesa
-  (burpsuite.override { proEdition = true; })
-  2
+     (pkgs.burpsuite.override { proEdition = true; })
+
 
   ];
 
