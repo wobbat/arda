@@ -123,14 +123,16 @@
 
 
  services.xserver.displayManager.lightdm.enable = true;
- services.xserver.windowManager.awesome = {
-      enable = true;
-      luaModules = with pkgs.luaPackages; [
-        # add any lua packages required by your configuration here
-      ];
+  services.xserver.windowManager.qtile = {
+  enable = true;
+  extraPackages = python3Packages: with python3Packages; [
+    qtile-extras
+  ];
+};
 
-    };
-  services.displayManager.defaultSession = "none+awesome";
+  services.displayManager = {
+    defaultSession = "qtile";
+  };
 
 
 
