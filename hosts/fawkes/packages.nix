@@ -28,7 +28,6 @@
     swaybg # Background setter for Wayland
     zoxide
     steam-run
-    open-vm-tools
 
   ];
 
