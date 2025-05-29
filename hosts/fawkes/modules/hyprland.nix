@@ -29,9 +29,9 @@
       ################
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      #monitor=,preferred,auto,auto
-      monitor = eDP-1, preferred, auto-down, 1.333333
-      monitor = DP-3, preferred, auto-up, 1.333333
+      monitor=,preferred,auto,auto
+      #monitor = eDP-1, preferred, auto-down, 1.333333
+      #monitor = DP-3, preferred, auto-up, 1.333333
 
       # unscale XWayland
       xwayland {
@@ -68,13 +68,7 @@
 
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
-      env = XCURSOR_SIZE,24
-      env = HYPRCURSOR_SIZE,24
-      env = GDK_DPI_SCALE,1
-      env = QT_SCALE_FACTOR,1
-      env = XCURSOR_SIZE,24
-      env = XCURSOR_DPI,96
-
+    
       #####################
       ### LOOK AND FEEL ###
       #####################
