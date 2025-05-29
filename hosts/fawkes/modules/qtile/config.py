@@ -38,7 +38,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn("urxvt"), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("wezterm"), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -127,30 +127,30 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                widget.GroupBox(),
-                widget.CurrentLayout(),
-              #  widget.Prompt(),
-              #  widget.WindowName(),
-              #  widget.Chord(
-              #      chords_colors={
-              #          "launch": ("#ff0000", "#ffffff"),
-              #      },
-              #      name_transform=lambda name: name.upper(),
-              #  ),
-              #  widget.TextBox("default config", name="default"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-              #  widget.Systray(),
-               # widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-               # widget.QuickExit(),
-            ],
-            30,
-            background="#202020",
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-        ),
+        # top=bar.Bar(
+        #     [
+        #         widget.GroupBox(),
+        #         widget.CurrentLayout(),
+        #       #  widget.Prompt(),
+        #       #  widget.WindowName(),
+        #       #  widget.Chord(
+        #       #      chords_colors={
+        #       #          "launch": ("#ff0000", "#ffffff"),
+        #       #      },
+        #       #      name_transform=lambda name: name.upper(),
+        #       #  ),
+        #       #  widget.TextBox("default config", name="default"),
+        #         # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        #         # widget.StatusNotifier(),
+        #       #  widget.Systray(),
+        #        # widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        #        # widget.QuickExit(),
+        #     ],
+        #     30,
+        #     background="#202020",
+        #     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+        #     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        # ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second

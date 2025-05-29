@@ -96,6 +96,7 @@
       rofi # Application launcher (replaces rofi for Wayland)
       wezterm # Terminal (as specified in your hyprland config)
       swaybg # Background setter (already in your hyprland config)
+      dmenu
 
       # Your existing packages
       htop
