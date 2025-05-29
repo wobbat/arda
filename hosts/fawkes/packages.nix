@@ -28,6 +28,9 @@
     swaybg # Background setter for Wayland
     zoxide
     steam-run
+      mesa
+   mesa.drivers
+  glxinfo
 
   ];
 
