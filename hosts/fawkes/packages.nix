@@ -13,6 +13,8 @@
     burpsuite
     git
     firefox
+    firefox-beta-bin
+
     wget
     python3
     jetbrains-mono
