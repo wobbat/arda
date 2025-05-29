@@ -60,6 +60,9 @@
   services.xserver.windowManager.qtile = {
   enable = true;
   configFile = ./modules/qtile/config.py;
+    extraSessionCommands = ''
+    hsetroot -solid "303030"
+  '';
 
   extraPackages = python3Packages: with python3Packages; [
     qtile-extras
@@ -97,6 +100,7 @@
       wezterm # Terminal (as specified in your hyprland config)
       swaybg # Background setter (already in your hyprland config)
       dmenu
+      hsetroot
 
       # Your existing packages
       htop
