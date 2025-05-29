@@ -126,7 +126,7 @@
     boot.initrd.kernelModules = [ "vmwgfx" ];
 
   # Enable OpenGL (3D acceleration)
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Explicitly use the vmware video driver for X/DRM
   services.xserver.videoDrivers = [ "vmware" ];
