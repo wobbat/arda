@@ -26,12 +26,12 @@
 
   home.file.awesome_config = {
      source = ../modules/awesome/rc.lua;
-     target = ".config/awesome/rc.lua";
+     target = "/home/wobbat/.config/awesome/rc.lua";
    };
 
   home.file.awesome_theme= {
      source = ../modules/awesome/theme.lua;
-     target = ".config/awesome/theme.lua";
+     target = "/home/wobbat/.config/awesome/theme.lua";
    };
 
       home.file.qtile_config = {
