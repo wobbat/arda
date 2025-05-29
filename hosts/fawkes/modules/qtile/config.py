@@ -3,7 +3,6 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import subprocess
-2
 
 
 @hook.subscribe.startup_once
@@ -48,6 +47,7 @@ keys = [
     Key([mod], "x", lazy.spawn("rofi -show run"), desc="Launch rofi"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "Space", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key(
         [mod],
@@ -115,7 +115,7 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(margin=10,border_normal="#151515",border_focus="#d79921", border_width=4),
+    layout.MonadTall(margin=10,border_normal="#151515",border_focus="#d79921", border_width=8),
     layout.Max(),
     # layout.MonadWide(),
     # layout.RatioTile(),

@@ -10,11 +10,12 @@
   environment.systemPackages = with pkgs; [
     vscode
     inputs.helix.packages."${pkgs.system}".helix
-    burpsuite
     git
+    unzip
     firefox
     firefox-beta-bin
-
+    xfce.thunar
+    xfce.thunar-archive-plugin
     wget
     python3
     jetbrains-mono
@@ -30,9 +31,8 @@
     swaybg # Background setter for Wayland
     zoxide
     steam-run
-      mesa
-     (pkgs.burpsuite.override { proEdition = true; })
-
+    mesa
+    (pkgs.burpsuite.override { proEdition = true; })
 
   ];
 
