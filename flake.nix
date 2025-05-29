@@ -105,8 +105,6 @@
               home-manager.useUserPackages = true;
               home-manager.users.wobbat.imports = [
                 ./hosts/remus/home.nix
-                inputs.zenbrowser.homeModules.beta
-
               ];
 
               # Optionally, use home-manager.extraSpecialArgs to pass
@@ -128,7 +126,6 @@
               home-manager.useUserPackages = true;
               home-manager.users.wobbat.imports = [
                 ./hosts/remus/home.nix
-                inputs.zenbrowser.homeModules.beta
 
               ];
 
