@@ -3,12 +3,12 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import subprocess
-
+2
 
 
 @hook.subscribe.startup_once
 def set_background():
-    subprocess.Popen(["hsetroot", "-solid", "#1d1f21"])
+    subprocess.Popen(["hsetroot", "-solid", "#303030"])
 mod = "mod1"
 terminal = guess_terminal()
 

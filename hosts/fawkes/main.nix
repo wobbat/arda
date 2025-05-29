@@ -60,9 +60,6 @@
   services.xserver.windowManager.qtile = {
   enable = true;
   configFile = ./modules/qtile/config.py;
-    extraSessionCommands = ''
-    hsetroot -solid "303030"
-  '';
 
   extraPackages = python3Packages: with python3Packages; [
     qtile-extras
