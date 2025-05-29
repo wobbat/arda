@@ -56,7 +56,6 @@
 
   # Enable polkit for authentication
   security.polkit.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
 
 
   # Configure keymap for Wayland
