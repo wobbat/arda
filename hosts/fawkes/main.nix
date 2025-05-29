@@ -49,13 +49,15 @@
   };
 
   # Enable Wayland and Hyprland
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
 
   # Enable XWayland for X11 app compatibility
-  programs.xwayland.enable = true;
+  # programs.xwayland.enable = true;
 
   # Enable polkit for authentication
   security.polkit.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
+
 
   # Configure keymap for Wayland
   console.keyMap = "us";
