@@ -118,6 +118,17 @@
     ];
 
 
+  systemd.services.vmtoolsd = {
+    description = "VMware Tools Daemon";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.open-vm-tools}/bin/vmtoolsd";
+      Restart = "always";
+    };
+  };
+
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
