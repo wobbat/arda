@@ -1,23 +1,28 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   nixpkgs.config.allowUnfree = true;
 
-  imports =
-    [ 
-      ./hardware.nix  
-      ./packages.nix
-    ];
+  imports = [
+    ./hardware.nix
+    ./packages.nix
+  ];
 
-    nix.settings.substituters = [
+  nix.settings.substituters = [
     "https://cache.nixos.org"
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  services.vmwareGuest.enable = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda"; # Change to your boot device
+  virtualisation.vmware.guest.enable = true;
 
   networking.hostName = "fawkes"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -45,16 +50,16 @@
 
   # Enable Wayland and Hyprland
   programs.hyprland.enable = true;
-  
+
   # Enable XWayland for X11 app compatibility
   programs.xwayland.enable = true;
-  
+
   # Enable polkit for authentication
   security.polkit.enable = true;
 
   # Configure keymap for Wayland
   console.keyMap = "us";
-  
+
   # Optional: Keep X11 keymap for XWayland apps
   services.xserver.xkb = {
     layout = "us";
@@ -70,25 +75,31 @@
   users.users.wobbat = {
     isNormalUser = true;
     description = "stan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
-    # Wayland essentials
-    rofi            # Application launcher (replaces rofi for Wayland)
-    wezterm         # Terminal (as specified in your hyprland config)
-    swaybg          # Background setter (already in your hyprland config)
-    
-    # Your existing packages
-    htop
-    feh
+      # Wayland essentials
+      rofi # Application launcher (replaces rofi for Wayland)
+      wezterm # Terminal (as specified in your hyprland config)
+      swaybg # Background setter (already in your hyprland config)
+
+      # Your existing packages
+      htop
+      feh
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # Audio support for Wayland
   security.rtkit.enable = true;
   services.pipewire = {
@@ -97,7 +108,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -113,10 +123,9 @@
   # services.openssh.enable = true;
 
   boot.kernelParams = [
-    "i915.force_probe=a7a1"  
+    "i915.force_probe=a7a1"
     "i915.enable_psr=0"
-    ];
-
+  ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -29,9 +29,9 @@
       ################
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      #monitor=,preferred,auto,auto
-      monitor = eDP-1, preferred, auto-down, 1.333333
-      monitor = DP-3, preferred, auto-up, 1.333333
+      monitor=,preferred,auto,auto
+      #monitor = eDP-1, preferred, auto-down, 1.333333
+      #monitor = DP-3, preferred, auto-up, 1.333333
 
       # unscale XWayland
       xwayland {
