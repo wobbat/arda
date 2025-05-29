@@ -47,11 +47,27 @@
     LC_TELEPHONE = "nl_NL.UTF-8";
     LC_TIME = "nl_NL.UTF-8";
   };
-  # Enable Wayland and Hyprland
-  programs.hyprland.enable = true;
 
-  # Enable XWayland for X11 app compatibility
-  programs.xwayland.enable = true;
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # testing this out to see if this improves?
+  #services.xserver.videoDrivers = [ "vmware" ];
+
+  # # Enable the GNOME Desktop Environment.
+  #services.xserver.windowManager.i3.enable = true;
+
+  services.xserver.windowManager.qtile = {
+  enable = true;
+  extraPackages = python3Packages: with python3Packages; [
+    qtile-extras
+  ];
+};
+
+  services.displayManager = {
+    defaultSession = "qtile";
+  };
+
 
   # Enable polkit for authentication
   security.polkit.enable = true;
