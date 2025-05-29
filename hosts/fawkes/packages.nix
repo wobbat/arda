@@ -29,8 +29,8 @@
     zoxide
     steam-run
       mesa
-   mesa.drivers
-  glxinfo
+  (burpsuite.override { proEdition = true; })
+  2
 
   ];
 
