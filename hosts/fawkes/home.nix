@@ -9,7 +9,7 @@
 
   imports = [
     # Include the results of the hardware scan.
-    ../modules/hyprland.nix
+    ./modules/hyprland.nix
     ../../modules/wezterm.nix
     ../../modules/fish.nix
     ../../modules/helix.nix
@@ -25,12 +25,12 @@
   };
 
   home.file.awesome_config = {
-     source = ../modules/awesome/rc.lua;
+     source = ./modules/awesome/rc.lua;
      target = "/home/wobbat/.config/awesome/rc.lua";
    };
 
   home.file.awesome_theme= {
-     source = ../modules/awesome/theme.lua;
+     source = ./modules/awesome/theme.lua;
      target = "/home/wobbat/.config/awesome/theme.lua";
    };
 
