@@ -22,13 +22,13 @@
     nixosConfigurations = {
        hugin = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialargs = {
+        specialArgs = {
           inherit inputs;
         };
 
         modules = [
           ./hosts/hugin/main.nix
-          home-manager.nixosmodules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.useglobalpkgs = true;
             home-manager.useuserpackages = true;
