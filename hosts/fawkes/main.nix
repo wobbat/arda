@@ -178,6 +178,7 @@
     shell = pkgs.fish;
     packages = with pkgs; [
       # User-specific packages can be added here
+      ly
     ];
   };
 

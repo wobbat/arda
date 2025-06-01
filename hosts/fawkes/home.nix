@@ -30,7 +30,6 @@
 
   programs.chromium = {
     enable = true;
-
   };
 
   # legacy dots
