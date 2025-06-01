@@ -14,16 +14,12 @@
     zenbrowser.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # Neovim
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
     inputs@{
       nixpkgs,
       home-manager,
-      nixvim,
       ...
     }:
     {
@@ -76,8 +72,6 @@
         "wobbat@solo" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            inputs.nixvim.homeManagerModules.nixvim
-
             ./solo/home.nix
             {
               home.username = "wobbat";
