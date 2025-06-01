@@ -46,10 +46,8 @@
   # =============================================================================
 
   # Bootloader
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda"; # Change to your boot device
 
   # System version
   system.stateVersion = "25.05";
