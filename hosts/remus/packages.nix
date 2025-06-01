@@ -29,6 +29,13 @@
     swaybg # Background setter for Wayland
     zoxide
     steam-run
+    nautilus
+    gnumake
+    gcc
+    libpng
+    pkg-config
+    cozette
+    scientifica
   ];
 
 }

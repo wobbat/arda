@@ -32,6 +32,7 @@
       #monitor=,preferred,auto,auto
       monitor = eDP-1, preferred, auto-down, 1.333333
       monitor = DP-3, preferred, auto-up, 1.333333
+      monitor = DP-1, preferred, auto-up, 1.333333
 
       # unscale XWayland
       xwayland {

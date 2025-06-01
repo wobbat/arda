@@ -109,6 +109,10 @@
     pulse.enable = true;
   };
 
+  fonts.enableDefaultFonts = true;
+  fonts.fontconfig.enable = true;
+  fonts.fontconfig.allowBitmaps = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
