@@ -8,7 +8,7 @@
  */
 
 configuration {
-  font: "Berkeley Mono bold 24";
+  font: "Berkeley Mono bold 20";
 
   drun {
     display-name: "[^.^]";
@@ -34,9 +34,6 @@ configuration {
   padding: 0;
   spacing: 0;
   cursor: #000000;
-
-
-
   bg: #000000;
   bg-alt: #232323;
   fg: #b4b4b4;

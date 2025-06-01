@@ -6,4 +6,8 @@ with pkgs; [
   gcc
   pkg-config
   python3
+  rustc
+  cargo
+  cmake
+
 ]

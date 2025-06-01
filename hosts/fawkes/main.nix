@@ -11,7 +11,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./hardware.nix
+    ./hardware-test.nix
     ./packages.nix
   ];
 
@@ -187,7 +187,7 @@
     packages = with pkgs; [
       # User-specific packages can be added here
       ly
-      (pkgs.burpsuite.override { proEdition = true; })
+          (pkgs.burpsuite.override { proEdition = true; })
     ];
   };
 
