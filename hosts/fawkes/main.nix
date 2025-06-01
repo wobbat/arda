@@ -69,7 +69,7 @@
     defaultSession = "none+awesome";
   };
 
-  services.xserver.displayManager.ly.enable = true;
+  services.displayManager.ly.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
