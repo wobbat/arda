@@ -187,6 +187,7 @@
     packages = with pkgs; [
       # User-specific packages can be added here
       ly
+      (pkgs.burpsuite.override { proEdition = true; })
     ];
   };
 
