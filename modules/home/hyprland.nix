@@ -351,7 +351,7 @@
       windowrulev2 = noborder, fullscreen:1
 
 
-      exec-once = swaybg -i /home/wobbat/.wallpapers/rock.png
+      exec = swaybg -i /home/wobbat/.wallpapers/rock.png
     '';
 
   };
