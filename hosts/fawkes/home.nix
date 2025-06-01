@@ -3,16 +3,15 @@
   pkgs,
   inputs,
   ...
-}:
-
-{
-
+}: {
   imports = [
     # Include the results of the hardware scan.
-    .modules/hyprland.nix
-    ../../modules/wezterm.nix
-    ../../modules/fish.nix
-    ../../modules/helix.nix
+    ../../modules/home/hyprland.nix
+    ../../modules/home/wezterm.nix
+    ../../modules/home/fish.nix
+    ../../modules/home/helix.nix
+    ../../modules/home/starship.nix
+    ../../modules/home/git.nix
   ];
 
   home.username = "wobbat";
@@ -24,91 +23,30 @@
     size = 24;
   };
 
-   xdg.configFile."qtile/config.py".source = ./modules/qtile/config.py;
-
-
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
-    eza
-
-    #security
-    nmap
-
-    #utils
-    file
-    which
-    btop
-    iotop
-    iftop
-    dmenu
-    i3status
-    firefox-beta-bin
-
-    #other
-    todoist-electron
-    rxvt-unicode
-    xorg.xfontsel
+    # install pkgs for home here
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "wobbat";
-    userEmail = "mail@wobbat.com";
-  };
-
-   programs.chromium = {
+  programs.chromium = {
     enable = true;
     package = pkgs.google-chrome.override {
       commandLineArgs = [
-        "--ozone-platform=x11"
+        "--ozone-platform=wayland"
+        "--enable-features=WaylandWindowDecorations"
+        "--force-device-scale-factor=1.5"
       ];
     };
   };
 
-  programs.autorandr = {
-    enable = true;
-  };
+  # legacy dots
+  home.file.".config/rofi".source = ../../modules/.files/rofi;
+  home.file.".config/rofi".recursive = true;
 
-  programs.zen-browser = {
-    enable = true;
-    nativeMessagingHosts = [ pkgs.firefoxpwa ];
-    # Add any other native connectors here
-  };
+  home.file.".config/nvim".source = ../../modules/.files/nvim;
+  home.file.".config/nvim".recursive = true;
 
-  programs.starship = {
-    enable = true;
-    # Configuration written to ~/.config/starship.toml
-    settings = {
-      format = ''
-        $time $directory
-        $character
-      '';
-      right_format = ''$all'';
-
-      # add_newline = false;
-
-      character = {
-        success_symbol = "[|](bold red)[|](bold green)[|](bold yellow)[|](bold purple)[|](bold blue)";
-        error_symbol = "[|](bold red)[|](bold red)[|](bold red)[|](bold red)[|](bold red)";
-      };
-
-      aws = {
-        disabled = true;
-      };
-
-      time = {
-        disabled = false;
-        format = "[$time](white bold)";
-        time_format = "%H:%M";
-      };
-
-      directory = {
-        style = "white bold";
-      };
-    };
-  };
-
-  # This value determines the home Manager release that your
+  # This value determines the home Manager release that your2
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
   # incompatible changes.
