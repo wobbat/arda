@@ -59,7 +59,7 @@
   # =============================================================================
 
   networking = {
-    hostName = "remus";
+    hostName = "fawkes";
     networkmanager.enable = true;
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   };
