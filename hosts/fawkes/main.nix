@@ -69,14 +69,21 @@
     defaultSession = "none+awesome";
   };
 
-  services.displayManager.ly.enable = true;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
     options = "caps:escape";
   };
+
+  services.displayManager.ly = {
+  enable = true;
+  settings = {
+    default_user = "yourusername";  # Replace with your actual username
+    remember = false;               # Optional: don't remember last login, always use default
+  };
+};
+
   # =============================================================================
   # NETWORKING AND HARDWARE
   # =============================================================================
