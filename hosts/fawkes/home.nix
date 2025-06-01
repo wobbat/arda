@@ -40,6 +40,9 @@
   home.file.".config/nvim".source = ../../modules/.files/nvim;
   home.file.".config/nvim".recursive = true;
 
+  home.file.".config/awesome".source = ../../modules/.files/awesome;
+  home.file.".config/awesome".recursive = true;
+
   # This value determines the home Manager release that your2
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
