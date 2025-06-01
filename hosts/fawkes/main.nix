@@ -55,6 +55,29 @@
   virtualisation.vmware.guest.enable = true;
 
   # =============================================================================
+  # XSERVER BECAUSE WAYLAND IS NOT FUN IN VM
+  # =============================================================================
+  services.xserver.enable = true;
+  services.xserver.windowManager.awesome = {
+    enable = true;
+    luaModules = with pkgs.luaPackages; [
+      # add any lua packages required by your configuration here
+    ];
+  };
+
+  services.displayManager = {
+    defaultSession = "none+awesome";
+  };
+
+  services.xserver.displayManager.ly.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+    options = "caps:escape";
+  };
+  # =============================================================================
   # NETWORKING AND HARDWARE
   # =============================================================================
 
@@ -95,24 +118,24 @@
   # =============================================================================
 
   programs = {
-    hyprland.enable = true;
-    xwayland.enable = true;
+    # hyprland.enable = true;
+    # xwayland.enable = true;
     fish.enable = true;
   };
 
-  # Keyboard configuration
-  console.keyMap = "us";
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    options = "caps:escape";
-  };
+  # # Keyboard configuration
+  # console.keyMap = "us";
+  # services.xserver.xkb = {
+  #   layout = "us";
+  #   variant = "";
+  #   options = "caps:escape";
+  # };
 
-  # Environment variables for Wayland
-  environment.variables = {
-    MOZ_ENABLE_WAYLAND = "1";
-    GDK_SCALE = "1.5"; # Adjust scale for HiDPI displays
-  };
+  # # Environment variables for Wayland
+  # environment.variables = {
+  #   MOZ_ENABLE_WAYLAND = "1";
+  #   GDK_SCALE = "1.5"; # Adjust scale for HiDPI displays
+  # };
 
   # =============================================================================
   # AUDIO
