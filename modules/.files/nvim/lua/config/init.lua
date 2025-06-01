@@ -1,0 +1,7 @@
+require('config.keymap')
+require('config.lazy')
+require('config.basic')
+require('config.commands')
+require('config.format')
+require('config.fileman')
+require('config.whopy')

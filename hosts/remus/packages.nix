@@ -36,6 +36,7 @@
     pkg-config
     cozette
     scientifica
+    neovim
   ];
 
 }

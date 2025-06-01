@@ -1,0 +1,3 @@
+return {
+	"wobbat/dim.nvim"
+       }

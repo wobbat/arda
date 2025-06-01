@@ -101,12 +101,16 @@
     };
   };
 
-  
+  # legacy dots 
   home.file.".config/rofi".source = ../../modules/.files/rofi;
   home.file.".config/rofi".recursive = true;
 
+  home.file.".config/nvim".source = ../../modules/.files/nvim;
+  home.file.".config/nvim".recursive = true;
 
-  # This value determines the home Manager release that your
+
+
+  # This value determines the home Manager release that your2
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
   # incompatible changes.
