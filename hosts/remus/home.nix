@@ -10,6 +10,8 @@
     ../../modules/home/wezterm.nix
     ../../modules/home/fish.nix
     ../../modules/home/helix.nix
+    ../../modules/home/starship.nix
+    ../../modules/home/git.nix
   ];
 
   home.username = "wobbat";
@@ -23,23 +25,9 @@
 
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
-    eza
-
-    #security
-    nmap
-
-    #utils
+   # install pkgs for home here
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "wobbat";
-    userEmail = "mail@wobbat.com";
-  };
-
-  programs.autorandr = {
-    enable = true;
-  };
 
   programs.chromium = {
     enable = true;
@@ -52,38 +40,6 @@
     };
   };
 
-  programs.starship = {
-    enable = true;
-    # Configuration written to ~/.config/starship.toml
-    settings = {
-      format = ''
-        $time $directory
-        $character
-      '';
-      right_format = ''$all'';
-
-      # add_newline = false;
-
-      character = {
-        success_symbol = "[|](bold red)[|](bold green)[|](bold yellow)[|](bold purple)[|](bold blue)";
-        error_symbol = "[|](bold red)[|](bold red)[|](bold red)[|](bold red)[|](bold red)";
-      };
-
-      aws = {
-        disabled = true;
-      };
-
-      time = {
-        disabled = false;
-        format = "[$time](white bold)";
-        time_format = "%H:%M";
-      };
-
-      directory = {
-        style = "white bold";
-      };
-    };
-  };
 
   # legacy dots
   home.file.".config/rofi".source = ../../modules/.files/rofi;
