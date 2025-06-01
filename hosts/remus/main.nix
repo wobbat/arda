@@ -16,15 +16,30 @@
   ];
 
   # Nix configuration
-  nix.settings = {
-    substituters = [
-      "https://cache.nixos.org"
-    ];
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly"; # or "daily", "03:00", etc.
+      options = "--delete-older-than 7d";
+    };
+
+    optimise = {
+      automatic = true;
+      dates = ["weekly"];
+    };
+
+    settings = {
+      substituters = [
+        "https://cache.nixos.org"
+      ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
+
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   # =============================================================================
   # BOOT AND SYSTEM
@@ -116,7 +131,15 @@
   # =============================================================================
 
   security.polkit.enable = true;
+
+  # =============================================================================
+  # Flatpack :(
+  # =============================================================================
+
+  # Mostly using this for zen-browser
   services.flatpak.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.config.common.default = "gtk";
 
   # =============================================================================
   # USER MANAGEMENT
@@ -136,7 +159,7 @@
   };
 
   # =============================================================================
-  # FIREWALL 
+  # FIREWALL
   # =============================================================================
 
   # Open ports in the firewall.

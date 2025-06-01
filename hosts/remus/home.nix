@@ -25,9 +25,8 @@
 
   # Packages that should be installed to the user profile.``
   home.packages = with pkgs; [
-   # install pkgs for home here
+    # install pkgs for home here
   ];
-
 
   programs.chromium = {
     enable = true;
@@ -39,7 +38,6 @@
       ];
     };
   };
-
 
   # legacy dots
   home.file.".config/rofi".source = ../../modules/.files/rofi;
