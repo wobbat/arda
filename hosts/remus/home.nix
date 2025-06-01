@@ -3,17 +3,13 @@
   pkgs,
   inputs,
   ...
-}:
-
-{
-
+}: {
   imports = [
     # Include the results of the hardware scan.
-    ../../modules/hyprland.nix
-    ../../modules/wezterm.nix
-    ../../modules/fish.nix
-    ../../modules/helix.nix
-    ../../modules/rofi.nix
+    ../../modules/home/hyprland.nix
+    ../../modules/home/wezterm.nix
+    ../../modules/home/fish.nix
+    ../../modules/home/helix.nix
   ];
 
   home.username = "wobbat";
@@ -33,18 +29,6 @@
     nmap
 
     #utils
-    file
-    which
-    btop
-    iotop
-    iftop
-    dmenu
-    i3status
-
-    #other
-    todoist-electron
-    rxvt-unicode
-    xorg.xfontsel
   ];
 
   programs.git = {
@@ -101,14 +85,12 @@
     };
   };
 
-  # legacy dots 
+  # legacy dots
   home.file.".config/rofi".source = ../../modules/.files/rofi;
   home.file.".config/rofi".recursive = true;
 
   home.file.".config/nvim".source = ../../modules/.files/nvim;
   home.file.".config/nvim".recursive = true;
-
-
 
   # This value determines the home Manager release that your2
   # configuration is compatible with. This helps avoid breakage

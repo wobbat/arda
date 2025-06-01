@@ -1,10 +1,15 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 with pkgs; [
   bluetui
   dtrx
-  hermit
+  eza
   zoxide
   steam-run
   nautilus
+  file
+  which
+  btop
+  wget
+  curl
+  unzip
 ]

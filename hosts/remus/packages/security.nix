@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 with pkgs; [
   burpsuite
-  wget
+  nmap
 ]

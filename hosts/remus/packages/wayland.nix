@@ -1,7 +1,6 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 with pkgs; [
-  wofi
+  rofi-wayland
   wl-clipboard
   grim
   slurp
