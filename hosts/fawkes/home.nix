@@ -38,7 +38,7 @@
 
   home.file.".config/nvim".source = ../../modules/.files/nvim;
   home.file.".config/nvim".recursive = true;
-
+# jkdhdhd
   home.file.".config/awesome".source = ../../modules/.files/awesome;
   home.file.".config/awesome".recursive = true;
 
