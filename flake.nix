@@ -30,8 +30,8 @@
           ./hosts/hugin/main.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useglobalpkgs = true;
-            home-manager.useuserpackages = true;
+            home-manager.useGlobalKkgs = true;
+            home-manager.useUserPackages = true;
             home-manager.users.wobbat.imports = [
               ./hosts/remus/home.nix
             ];
