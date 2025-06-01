@@ -7,13 +7,13 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages =
-    (import ./packages/editors.nix {inherit pkgs inputs;})
-    ++ (import ./packages/browsers.nix {inherit pkgs;})
-    ++ (import ./packages/development.nix {inherit pkgs;})
-    ++ (import ./packages/security.nix {inherit pkgs;})
-    ++ (import ./packages/system-utils.nix {inherit pkgs;})
-    ++ (import ./packages/wayland.nix {inherit pkgs;})
-    ++ (import ./packages/terminal.nix {inherit pkgs;})
-    ++ (import ./packages/fonts.nix {inherit pkgs;})
-    ++ (import ./packages/dev-libs.nix {inherit pkgs;});
+    (import ../../modules/packages/editors.nix {inherit pkgs inputs;})
+    ++ (import ../../modules/packages/browsers.nix {inherit pkgs;})
+    ++ (import ../../modules/packages/development.nix {inherit pkgs;})
+    ++ (import ../../modules/packages/security.nix {inherit pkgs;})
+    ++ (import ../../modules/packages/system-utils.nix {inherit pkgs;})
+    ++ (import ../../modules/packages/wayland.nix {inherit pkgs;})
+    ++ (import ../../modules/packages/terminal.nix {inherit pkgs;})
+    ++ (import ../../modules/packages/fonts.nix {inherit pkgs;})
+    ++ (import ../../modules/packages/dev-libs.nix {inherit pkgs;});
 }
