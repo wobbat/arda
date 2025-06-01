@@ -1,0 +1,10 @@
+{ pkgs, ... }:
+
+with pkgs; [
+  git
+  nixfmt-rfc-style
+  gnumake
+  gcc
+  pkg-config
+  python3
+]

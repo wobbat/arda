@@ -8,7 +8,7 @@
  */
 
 configuration {
-  font: "JetBrains Mono bold 16";
+  font: "Berkeley Mono bold 24";
 
   drun {
     display-name: "[^.^]";
@@ -48,7 +48,7 @@ configuration {
 
 window {
     fullscreen: true;
-    margin: 250;
+    padding: 250px;
 }
 
 mainbox {

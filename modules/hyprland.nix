@@ -351,7 +351,7 @@
       windowrulev2 = noborder, fullscreen:1
 
 
-      exec-once = swaybg -c 000000
+      exec-once = swaybg -i /home/wobbat/wallpaper/rock.png
     '';
 
   };

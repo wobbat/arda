@@ -28,69 +28,6 @@
     }:
     {
       nixosConfigurations = {
-        frodo = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./frodo/main.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.wobbat.imports = [
-                ./frodo/home.nix
-                inputs.nixvim.homeManagerModules.nixvim
-              ];
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
-          ];
-        };
-        theoden = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./theoden/main.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.wobbat.imports = [
-                ./theoden/home.nix
-                inputs.nixvim.homeManagerModules.nixvim
-              ];
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
-          ];
-        };
-        albus = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./albus/main.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.wobbat = import ./albus/home.nix;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
-          ];
-        };
         remus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
