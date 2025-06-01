@@ -39,6 +39,9 @@
     };
   };
 
+
+  home.file.".wallpapers".source = ../../modules/.files/wallpapers;
+  home.file.".wallpapers".recursive = true;
   # legacy dots
   home.file.".config/rofi".source = ../../modules/.files/rofi;
   home.file.".config/rofi".recursive = true;
