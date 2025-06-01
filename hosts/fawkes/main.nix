@@ -11,7 +11,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./hardware-test.nix
+    ./hardware.nix
     ./packages.nix
   ];
 
