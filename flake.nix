@@ -20,7 +20,7 @@
     ...
   }: {
     nixosConfigurations = {
-       hugin = nixpkgs.lib.nixossystem {
+       hugin = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialargs = {
           inherit inputs;
