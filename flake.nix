@@ -20,6 +20,27 @@
     ...
   }: {
     nixosConfigurations = {
+       hugin = nixpkgs.lib.nixossystem {
+        system = "x86_64-linux";
+        specialargs = {
+          inherit inputs;
+        };
+
+        modules = [
+          ./hosts/hugin/main.nix
+          home-manager.nixosmodules.home-manager
+          {
+            home-manager.useglobalpkgs = true;
+            home-manager.useuserpackages = true;
+            home-manager.users.wobbat.imports = [
+              ./hosts/remus/home.nix
+            ];
+
+            # optionally, use home-manager.extraspecialargs to pass
+            # arguments to home.nix
+          }
+        ];
+      };
       remus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
