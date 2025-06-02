@@ -30,7 +30,7 @@
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
       #monitor=,preferred,auto,auto
-      monitor = eDP-1, preferred, auto-down, 1.333333
+      monitor = eDP-1, preferred, auto-down, 1
       monitor = DP-3, preferred, auto-up, 1.333333
       monitor = DP-1, preferred, auto-up, 1.333333
 
@@ -90,8 +90,9 @@
           border_size = 8
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          col.active_border = rgba(7a3a2bee) rgba(896a40ee) 100deg
-          col.inactive_border = rgba(151515aa)
+          # col.active_border = rgba(7a3a2bee) rgba(896a40ee) 100deg
+          col.active_border = rgba(896a40ff)
+          col.inactive_border = rgba(151515ff)
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
           resize_on_border = false
@@ -351,7 +352,7 @@
       windowrulev2 = noborder, fullscreen:1
 
 
-      exec = swaybg -i /home/wobbat/.wallpapers/rock.png
+      exec-once = swaybg -i /home/wobbat/.wallpapers/rock.png
     '';
 
   };
