@@ -6,7 +6,7 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
-    ../../modules/home/hyprland.nix
+    # ../../modules/home/hyprland.nix
     ../../modules/home/wezterm.nix
     ../../modules/home/fish.nix
     ../../modules/home/helix.nix
@@ -30,24 +30,17 @@
 
   programs.chromium = {
     enable = true;
-    package = pkgs.google-chrome.override {
-      commandLineArgs = [
-        "--ozone-platform=wayland"
-        "--enable-features=WaylandWindowDecorations"
-        "--force-device-scale-factor=1.5"
-      ];
-    };
   };
 
-
-  home.file.".wallpapers".source = ../../modules/.files/wallpapers;
-  home.file.".wallpapers".recursive = true;
   # legacy dots
   home.file.".config/rofi".source = ../../modules/.files/rofi;
   home.file.".config/rofi".recursive = true;
 
   home.file.".config/nvim".source = ../../modules/.files/nvim;
   home.file.".config/nvim".recursive = true;
+# jkdhdhd
+  home.file.".config/awesome".source = ../../modules/.files/awesome;
+  home.file.".config/awesome".recursive = true;
 
   # This value determines the home Manager release that your2
   # configuration is compatible with. This helps avoid breakage
