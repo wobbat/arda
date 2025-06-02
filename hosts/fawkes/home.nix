@@ -6,7 +6,6 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
-    ../../modules/home/hyprland.nix
     ../../modules/home/wezterm.nix
     ../../modules/home/fish.nix
     ../../modules/home/helix.nix
@@ -30,13 +29,6 @@
 
   programs.chromium = {
     enable = true;
-    package = pkgs.google-chrome.override {
-      commandLineArgs = [
-        "--ozone-platform=wayland"
-        "--enable-features=WaylandWindowDecorations"
-        "--force-device-scale-factor=1.5"
-      ];
-    };
   };
 
 
