@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   # =============================================================================
   # BASIC SYSTEM CONFIGURATION
   # =============================================================================
@@ -11,7 +12,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./hardware-test.nix
+    ./hardware.nix
     ./packages.nix
   ];
 
@@ -25,7 +26,7 @@
 
     optimise = {
       automatic = true;
-      dates = ["weekly"];
+      dates = [ "weekly" ];
     };
 
     settings = {
@@ -53,6 +54,7 @@
   system.stateVersion = "25.05";
 
   virtualisation.vmware.guest.enable = true;
+  services.xserver.videoDrivers = [ "vmware" ];
 
   # =============================================================================
   # XSERVER BECAUSE WAYLAND IS NOT FUN IN VM
@@ -77,12 +79,12 @@
   };
 
   services.displayManager.ly = {
-  enable = true;
-  settings = {
-    default_user = "yourusername";  # Replace with your actual username
-    remember = false;               # Optional: don't remember last login, always use default
+    enable = true;
+    settings = {
+      default_user = "wobbat"; # Replace with your actual username
+      remember = false; # Optional: don't remember last login, always use default
+    };
   };
-};
 
   # =============================================================================
   # NETWORKING AND HARDWARE
@@ -125,8 +127,6 @@
   # =============================================================================
 
   programs = {
-    # hyprland.enable = true;
-    # xwayland.enable = true;
     fish.enable = true;
   };
 
@@ -168,8 +168,8 @@
 
   # Mostly using this for zen-browser
   services.flatpak.enable = true;
-  xdg.portal.enable = true; 
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
 
   # =============================================================================
@@ -187,7 +187,7 @@
     packages = with pkgs; [
       # User-specific packages can be added here
       ly
-          (pkgs.burpsuite.override { proEdition = true; })
+      (pkgs.burpsuite.override { proEdition = true; })
     ];
   };
 

@@ -1,5 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  burpsuite
+  # burpsuite
   nmap
 ]

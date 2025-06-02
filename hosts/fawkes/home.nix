@@ -3,10 +3,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
-    # Include the results of the hardware scan.
-    # ../../modules/home/hyprland.nix
     ../../modules/home/wezterm.nix
     ../../modules/home/fish.nix
     ../../modules/home/helix.nix
@@ -38,7 +37,7 @@
 
   home.file.".config/nvim".source = ../../modules/.files/nvim;
   home.file.".config/nvim".recursive = true;
-# jkdhdhd
+
   home.file.".config/awesome".source = ../../modules/.files/awesome;
   home.file.".config/awesome".recursive = true;
 
