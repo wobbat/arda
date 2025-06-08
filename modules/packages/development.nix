@@ -1,5 +1,6 @@
-{pkgs, ...}:
-with pkgs; [
+{ pkgs, ... }:
+with pkgs;
+[
   git
   nixfmt-rfc-style
   gnumake
@@ -9,5 +10,7 @@ with pkgs; [
   rustc
   cargo
   cmake
-
+  bun
+  go
+  luaformatter
 ]

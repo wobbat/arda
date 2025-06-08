@@ -1,3 +1,1 @@
-return {
-	"wobbat/dim.nvim"
-       }
+return {"wobbat/dim.nvim"}

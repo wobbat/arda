@@ -13,7 +13,6 @@
       config.warn_about_missing_glyphs = false
 
       config.font = wezterm.font('JetBrains Mono', { weight = 'Bold' })
-      config.font = wezterm.font('VictorMono NF', { weight = 'Bold' })
       config.font = wezterm.font('Inconsolata', { weight = 'Bold' })
       config.font = wezterm.font('Berkeley Mono', { weight = 'Bold' })
       config.font_size = 15.0
@@ -25,7 +24,6 @@
       config.hide_tab_bar_if_only_one_tab = true
       config.show_new_tab_button_in_tab_bar = false
       config.enable_wayland = true
-      config.window_background_opacity = 0.99
 
       config.window_padding = {
           left = '2cell',

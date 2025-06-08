@@ -16,7 +16,7 @@ local function open_floating_terminal()
         col = col,
         row = row,
         style = 'minimal',
-        border = 'rounded',
+        border = 'rounded'
     })
 
     -- Set the buffer to terminal mode
@@ -24,11 +24,11 @@ local function open_floating_terminal()
     vim.api.nvim_command('startinsert') -- Start in insert mode
 
     -- Optionally set the window to close with <q>
-    vim.api.nvim_buf_set_keymap(buf, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(buf, 'n', 'q', ':q<CR>',
+                                {noremap = true, silent = true})
 end
 
 -- Call the function
-vim.api.nvim_create_user_command("FloatTerm", function()
-    open_floating_terminal()
-end, {})
+vim.api.nvim_create_user_command("FloatTerm",
+                                 function() open_floating_terminal() end, {})
 

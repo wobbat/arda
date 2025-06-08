@@ -4,6 +4,8 @@ with pkgs; [
   wl-clipboard
   grim
   slurp
+  wf-recorder
   swaybg
   waybar
+  xdg-desktop-portal-hyprland
 ]

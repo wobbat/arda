@@ -1,11 +1,18 @@
-{pkgs, ...}:
-with pkgs; [
+{ pkgs, ... }:
+with pkgs;
+[
+  fd
+  ripgrep
+  fzf
   bluetui
   dtrx
   eza
   feh
   zoxide
+  mpv
   steam-run
+  asciinema
+  imagemagick
   nautilus
   file
   which
@@ -14,4 +21,8 @@ with pkgs; [
   curl
   unzip
   ytermusic
+  xclip
+  light
+  ksnip
 ]
+

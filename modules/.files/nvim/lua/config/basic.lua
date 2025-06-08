@@ -10,7 +10,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.list = true
 
---pretty whitespace and git chars
+-- pretty whitespace and git chars
 vim.opt.listchars = {
     space = " ",
     eol = " ",
@@ -18,7 +18,7 @@ vim.opt.listchars = {
     trail = "•",
     extends = "❯",
     precedes = "❮",
-    nbsp = "",
+    nbsp = ""
 }
 
 vim.opt.fillchars = {
@@ -26,7 +26,7 @@ vim.opt.fillchars = {
     foldsep = " ",
     foldopen = "",
     foldclose = "",
-    diff = "╱",
+    diff = "╱"
 }
 
 vim.opt.cursorline = false
@@ -34,7 +34,7 @@ vim.opt.cursorline = false
 vim.api.nvim_set_hl(0, "WinSeparator", {
     fg = "#44475a", -- darker gray (adjust to your liking)
     bg = "NONE",
-    bold = true,
+    bold = true
 })
 
-vim.opt.fillchars:append { vert = " " } -- or "┃", "▌"
+vim.opt.fillchars:append{vert = " "} -- or "┃", "▌"

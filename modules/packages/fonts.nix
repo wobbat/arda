@@ -5,4 +5,6 @@ with pkgs; [
   scientifica
   font-awesome
   hermit
+  terminus_font_ttf
+  terminus_font
 ]

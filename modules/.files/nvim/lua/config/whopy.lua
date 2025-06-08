@@ -1,7 +1,7 @@
 local function get_relative_path()
-    local cwd = vim.fn.getcwd()               -- Current working directory
+    local cwd = vim.fn.getcwd() -- Current working directory
     local last_part = cwd:match("([^/\\]+)$") -- Match the last part after the last slash
-    local rel_path = vim.fn.expand('%:.')     -- Full path of the current file
+    local rel_path = vim.fn.expand('%:.') -- Full path of the current file
     local final_path = last_part .. "/" .. rel_path
     return final_path
 end
@@ -25,7 +25,8 @@ function Whopy2()
 
     -- Copy to clipboard
     vim.fn.setreg('+', text_to_copy)
-    print("Text copied to clipboard with <figure> tag, <pre> tag, and relative file path!")
+    print(
+        "Text copied to clipboard with <figure> tag, <pre> tag, and relative file path!")
 end
 
 function Whopy()
@@ -51,7 +52,9 @@ function Whopy()
 
     -- Copy to clipboard
     vim.fn.setreg('+', text_to_copy)
-    print("Text copied to clipboard with <figure> tag, <pre> tag, and relative file path!")
+    print(
+        "Text copied to clipboard with <figure> tag, <pre> tag, and relative file path!")
 end
 
-vim.api.nvim_set_keymap('v', '<Leader>whc', ':lua Whopy()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<Leader>whc', ':lua Whopy()<CR>',
+                        {noremap = true, silent = true})
