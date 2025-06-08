@@ -1,0 +1,35 @@
+return {
+  {
+    'OXY2DEV/markview.nvim',
+    ft = { 'markdown' },  -- Only load in markdown buffers
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',  -- Treesitter support (optional, but useful for syntax highlighting)
+    },
+    opts = {
+      -- General settings
+      enabled = true,
+        local preset =require("markview.presets").headings;
+
+      markdown = {
+                    headings = preset.marker
+                },
+    config = function(_, opts)
+      -- 1) Setup the plugin
+      require('markview').setup(opts)
+
+      -- 2) Custom highlights (if required)
+      -- Markview only allows basic color overrides for checkboxes and headings
+
+      -- For headings (override to match Markdown-style #, ##, etc.)
+      vim.api.nvim_set_hl(0, 'MarkviewHeading1', { fg = '#f4bf75', bg = '#7a603b' })
+      vim.api.nvim_set_hl(0, 'MarkviewHeading2', { fg = '#b46958', bg = '#5a352c' })
+      vim.api.nvim_set_hl(0, 'MarkviewHeading3', { fg = '#90A959', bg = '#48552d' })
+      vim.api.nvim_set_hl(0, 'MarkviewHeading4', { fg = '#88afa2', bg = '#445851' })
+
+      -- For checkboxes (optional)
+      vim.api.nvim_set_hl(0, 'MarkviewUnchecked', { fg = '#727272' })
+      vim.api.nvim_set_hl(0, 'MarkviewChecked', { fg = '#4CAF50' })
+    end,
+  },
+}
+
