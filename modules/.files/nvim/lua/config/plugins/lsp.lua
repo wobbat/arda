@@ -80,7 +80,7 @@ return {
 
             -- Mason-LSPConfig v2: ensure & handler table
             require('mason-lspconfig').setup {
-                ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer', 'gopls', 'ocamllsp' },
+                ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls' },
                 automatic_installation = true, -- install if missing
                 handlers = {
                     -- default handler for all servers except lua_ls

@@ -55,7 +55,7 @@ return {
       heading = {
         enabled        = true,
         position       = 'inline',
-        icons          = { '# ', '## ', '### ', '#### ', '##### ', '###### ' },
+        --icons          = { '# ', '## ', '### ', '#### ', '##### ', '###### ' },
         sign           = false,
         width          = 'full',
         left_margin    = 0,
@@ -105,15 +105,13 @@ return {
       vim.api.nvim_set_hl(0, 'RenderMarkdownH6Bg',           { fg = '#AA749F', bg = '#553a50', italic = false })
       vim.api.nvim_set_hl(0, 'markdownHeadingDelimiter',     { fg = '#727272', bg = '#202020', italic = false })
 
-vim.api.nvim_set_hl(0, '@markup.heading.1.markdown', { fg = '#f4bf75', bg = '#7a603b', italic = false })  -- H1
-vim.api.nvim_set_hl(0, '@markup.heading.2.markdown', { fg = '#b46958', bg = '#5a352c', italic = false })  -- H2
-vim.api.nvim_set_hl(0, '@markup.heading.3.markdown', { fg = '#90A959', bg = '#48552d', italic = false })  -- H3
-vim.api.nvim_set_hl(0, '@markup.heading.4.markdown', { fg = '#88afa2', bg = '#445851', italic = false })  -- H4
-vim.api.nvim_set_hl(0, '@markup.heading.5.markdown', { fg = '#7e97ab', bg = '#3f4c56', italic = false })  -- H5
-vim.api.nvim_set_hl(0, '@markup.heading.6.markdown', { fg = '#AA749F', bg = '#553a50', italic = false })  -- H6
-
-
-        end,
+      vim.api.nvim_set_hl(0, '@markup.heading.1.markdown', { fg = '#f4bf75', bg = '#7a603b', italic = false })  -- H1
+      vim.api.nvim_set_hl(0, '@markup.heading.2.markdown', { fg = '#b46958', bg = '#5a352c', italic = false })  -- H2
+      vim.api.nvim_set_hl(0, '@markup.heading.3.markdown', { fg = '#90A959', bg = '#48552d', italic = false })  -- H3
+      vim.api.nvim_set_hl(0, '@markup.heading.4.markdown', { fg = '#88afa2', bg = '#445851', italic = false })  -- H4
+      vim.api.nvim_set_hl(0, '@markup.heading.5.markdown', { fg = '#7e97ab', bg = '#3f4c56', italic = false })  -- H5
+      vim.api.nvim_set_hl(0, '@markup.heading.6.markdown', { fg = '#AA749F', bg = '#553a50', italic = false })  -- H6
+      end,
   },
 }
 
