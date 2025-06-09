@@ -7,7 +7,8 @@
         $time $directory
         $character
       '';
-      right_format = ''$all'';
+      #right_format = ''$all'';
+      right_format = '''';
 
       # add_newline = false;
 

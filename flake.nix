@@ -12,6 +12,9 @@
     wbp.url = "github:wobbat/wobbix_packages";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.url = "github:wobbat/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    
   };
 
   outputs =

@@ -8,4 +8,5 @@ with pkgs; [
   inputs.helix.packages."${pkgs.system}".helix
   # put this here because in browser everything broke...
   inputs.zen-browser.packages.${pkgs.system}.default
+  neovim
 ]

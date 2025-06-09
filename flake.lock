@@ -6,11 +6,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1748702599,
-        "narHash": "sha256-cXzTGHrZsT4wSxlLvw2ZlHPVjC/MA2W0sI/KF1yStbY=",
+        "lastModified": 1749432877,
+        "narHash": "sha256-z3fWdIANU38HVqgqAhBM0lHq7OTa3Ncxs4Hh/dejEk8=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "2baff46b2578d78d817b9e128e8cc00345541f0b",
+        "rev": "2b26d27416b4b0fb2286bf05aae173ec23dd6592",
         "type": "github"
       },
       "original": {
@@ -27,11 +27,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748737919,
-        "narHash": "sha256-5kvBbLYdp+n7Ftanjcs6Nv+UO6sBhelp6MIGJ9nWmjQ=",
+        "lastModified": 1749400020,
+        "narHash": "sha256-0nTmHO8AYgRYk5v6zw5oZ3x9nh+feb+Isn7WNe318M0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5675a9686851d9626560052a032c4e14e533c1fa",
+        "rev": "2835e8ba0ad99ba86d4a5e497a962ec9fa35e48f",
         "type": "github"
       },
       "original": {
@@ -58,11 +58,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1748693115,
-        "narHash": "sha256-StSrWhklmDuXT93yc3GrTlb0cKSS0agTAxMGjLKAsY8=",
+        "lastModified": 1749285348,
+        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "910796cabe436259a29a72e8d3f5e180fc6dfacc",
+        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
         "type": "github"
       },
       "original": {
@@ -93,7 +93,8 @@
         "helix": "helix",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "wbp": "wbp"
+        "wbp": "wbp",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
@@ -132,6 +133,26 @@
       "original": {
         "owner": "wobbat",
         "repo": "wobbix_packages",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748837535,
+        "narHash": "sha256-fn9n5rHrnV83v5y7DCS3uRWIdOab2hkAhfFTrjSg/gg=",
+        "owner": "wobbat",
+        "repo": "zen-browser-flake",
+        "rev": "9a3d6741f1324f47c27fb6aede05fbcbdefeadc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wobbat",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }
