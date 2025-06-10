@@ -6,12 +6,15 @@
           # Commands to run in interactive sessions can go here
       end
 
-      set fish_color_error normal
-      set fish_color_command green
-      set fish_greeting
-      set GOPATH $HOME/go
-      set MOZ_ENABLE_WAYLAND 1
-      #set OZONE_PLATFORM wayland
+        set fish_color_error normal
+        set fish_color_command green
+        set fish_greeting "" # Set to an empty string to suppress the greeting
+        set GOPATH $HOME/go
+
+      if test "$hostname" != "fawkes"
+        set MOZ_ENABLE_WAYLAND 1
+        set OZONE_PLATFORM wayland # Uncomment this line if you want to enable it
+      end
 
 
       set -Ux EDITOR nvim
