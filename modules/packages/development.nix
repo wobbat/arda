@@ -11,7 +11,9 @@ with pkgs;
   cargo
   cmake
   bun
-nodejs_24
+  nodejs_24
   go
   luaformatter
+  vsce
+
 ]

@@ -91,8 +91,8 @@
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
           # col.active_border = rgba(7a3a2bee) rgba(896a40ee) 100deg
-          col.active_border = rgba(896a40ff)
-          col.inactive_border = rgba(151515ff)
+          col.active_border = rgba(8a7aa9ff)
+          col.inactive_border = rgba(374151ff)
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
           resize_on_border = false
@@ -352,7 +352,7 @@
       windowrulev2 = noborder, fullscreen:1
 
 
-      exec-once = swaybg -i /home/wobbat/.wallpapers/rock.png
+      exec-once = swaybg -i /home/wobbat/.wallpapers/spiral.png
     '';
 
   };

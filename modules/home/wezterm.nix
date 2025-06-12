@@ -171,7 +171,7 @@ local colors = {
   fg = "#c2c8d1",
   bg = "#05080f",
   gray = "#374151",
-  gray_blue = "#ef4444",      -- Red / PriorityHigh
+  gray_blue = "#d03535",      -- Red / PriorityHigh
   sign_add = "#52796f",       -- Green / Success
   warning = "#e39209",        -- Yellow / PriorityMedium
   medium_gray_blue = "#4a5568", -- Blue / PrimaryAccent
@@ -180,9 +180,9 @@ local colors = {
   cyan = "#64748b",           -- Cyan / Muted functions
   white = "#c2c8d1",          -- Same as fg
   alt_bg = "#020617",         -- Very dark background
-  sign_delete = "#ef4444",    -- Bright red = same
+  sign_delete = "#d03535",    -- Bright red = same
   green = "#52796f",
-  yellow = "#e39209",
+  yellow = "#e79214",
   purple = "#8a7aa9",         -- Reused for consistency
 }
 
