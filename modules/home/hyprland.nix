@@ -352,7 +352,7 @@
       windowrulev2 = noborder, fullscreen:1
 
 
-      exec-once = swaybg -i /home/wobbat/.wallpapers/spiral.png
+      exec-once = swaybg -i /home/wobbat/.wallpapers/spiral.jpg
     '';
 
   };
