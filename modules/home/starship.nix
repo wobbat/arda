@@ -13,8 +13,8 @@
       # add_newline = false;
 
       character = {
-        success_symbol = "[|](bold red)[|](bold green)[|](bold yellow)[|](bold purple)[|](bold blue)";
-        error_symbol = "[|](bold red)[|](bold red)[|](bold red)[|](bold red)[|](bold red)";
+        success_symbol = "[:](bold yellow)[:](bold red)[:](bold green)[:](bold purple)[:](bold blue)";
+        error_symbol = "[:](bold red)[:](bold red)[:](bold red)[:](bold red)[:](bold red)";
       };
 
       aws = {

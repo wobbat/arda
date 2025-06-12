@@ -1,4 +1,4 @@
-vim.cmd('colorscheme dim')
+vim.cmd('colorscheme nebula')
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true

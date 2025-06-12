@@ -165,6 +165,65 @@
           },
       }
 
+
+-- Define color palette
+local colors = {
+  fg = "#c2c8d1",
+  bg = "#05080f",
+  gray = "#374151",
+  gray_blue = "#ef4444",      -- Red / PriorityHigh
+  sign_add = "#52796f",       -- Green / Success
+  warning = "#e39209",        -- Yellow / PriorityMedium
+  medium_gray_blue = "#4a5568", -- Blue / PrimaryAccent
+  magenta = "#8a7aa9",        -- Lavender
+  bright_magenta = "#a992cc", -- Brighter lavender
+  cyan = "#64748b",           -- Cyan / Muted functions
+  white = "#c2c8d1",          -- Same as fg
+  alt_bg = "#020617",         -- Very dark background
+  sign_delete = "#ef4444",    -- Bright red = same
+  green = "#52796f",
+  yellow = "#e39209",
+  purple = "#8a7aa9",         -- Reused for consistency
+}
+
+-- Set config.colors directly
+config.colors = {
+  foreground = colors.fg,
+  background = colors.bg,
+  cursor_fg = colors.bg,
+  cursor_bg = colors.fg,
+  cursor_border = colors.gray,
+
+  selection_bg = colors.gray_blue,
+  selection_fg = colors.alt_bg,
+
+  tab_bar = {
+    background = "#000000",
+  },
+
+  ansi = {
+    colors.alt_bg,           -- 0: Black
+    colors.gray_blue,        -- 1: Red
+    colors.sign_add,         -- 2: Green
+    colors.warning,          -- 3: Yellow
+    colors.medium_gray_blue, -- 4: Blue
+    colors.magenta,          -- 5: Lavender
+    colors.cyan,             -- 6: Cyan
+    colors.white,            -- 7: White
+  },
+
+  brights = {
+    colors.gray,             -- 8: Bright Black
+    colors.sign_delete,      -- 9: Bright Red
+    colors.green,            -- 10: Bright Green
+    colors.yellow,           -- 11: Bright Yellow
+    colors.medium_gray_blue, -- 12: Bright Blue
+    colors.bright_magenta,   -- 13: Bright Lavender
+    colors.cyan,             -- 14: Bright Cyan
+    colors.white,            -- 15: Bright White
+  },
+}
+
       return config
     '';
   };

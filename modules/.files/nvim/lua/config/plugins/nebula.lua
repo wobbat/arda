@@ -1,0 +1,1 @@
+return {"wobbat/nebula.nvim"}
