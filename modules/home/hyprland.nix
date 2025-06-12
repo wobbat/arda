@@ -87,11 +87,11 @@
           gaps_in = 5
           gaps_out = 20
           no_focus_fallback = false
-          border_size = 8
+          border_size = 12
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
           # col.active_border = rgba(7a3a2bee) rgba(896a40ee) 100deg
-          col.active_border = rgba(8a7aa9ff)
+          col.active_border = rgba(64748bff)
           col.inactive_border = rgba(374151ff)
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -164,12 +164,12 @@
       # Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
       # "Smart gaps" / "No gaps when only"
       # uncomment all if you wish to use that.
-      # workspace = w[tv1], gapsout:0, gapsin:0
-      # workspace = f[1], gapsout:0, gapsin:0
-      # windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1]
-      # windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
-      # windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
-      # windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
+       workspace = w[tv1], gapsout:0, gapsin:0
+       workspace = f[1], gapsout:0, gapsin:0
+       windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1]
+       windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
+       windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
+       windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       dwindle {
