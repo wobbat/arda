@@ -33,11 +33,12 @@ configuration {
   margin: 0;
   padding: 0;
   spacing: 0;
-  cursor: #000000;
-  bg: #000000;
-  bg-alt: #232323;
-  fg: #b4b4b4;
-  fg-alt: #424242;
+  cursor: #05080f;
+  bg: #05080f;
+  bg-alt: #05080f;
+  fg: #c2c8d1;
+  selected: #ab8652;
+  fg-alt: #4a5568;
 
   background-color: @bg;
   text-color: @fg;
@@ -78,5 +79,5 @@ element-text {
 }
 
 element-text selected {
-  text-color: @fg;
+  text-color: @selected;
 }
