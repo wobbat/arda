@@ -1,4 +1,4 @@
-vim.cmd('colorscheme nebula')
+vim.cmd('colorscheme milkyway')
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
