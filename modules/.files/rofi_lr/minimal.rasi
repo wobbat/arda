@@ -37,7 +37,7 @@ configuration {
   bg: #05080f;
   bg-alt: #05080f;
   fg: #c2c8d1;
-  selected: #ab8652;
+  selected: #e79214;
   fg-alt: #4a5568;
 
   background-color: @bg;
