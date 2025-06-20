@@ -23,6 +23,7 @@
       case Linux
           fish_add_path $HOME/.cargo/bin
           fish_add_path $HOME/go/bin
+          fish_add_path $HOME/.local/npm-global/bin
       case Darwin
           eval (/opt/homebrew/bin/brew shellenv)
           fish_add_path $HOME/go/bin
@@ -40,6 +41,7 @@
       alias n="nvim"
       alias backlight="sudo light -s sysfs/backlight/intel_backlight -S"
       alias sbm='cat ~/_/bookmarks/bookmarks.txt | fzf --border=rounded --prompt="Search Bookmarks > "  --bind="enter:execute-silent(xdg-open {-1})+abort" --preview="echo {-1}"  --preview-window="up,1" --color=16 --layout=reverse'
+      alias oc='bun run ~/dev/opencode/packages/opencode/src/index.ts'
 
       function abm
           printf "%s - %s\n" \

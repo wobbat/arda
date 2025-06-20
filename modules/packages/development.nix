@@ -15,5 +15,4 @@ with pkgs;
   go
   luaformatter
   vsce
-
 ]
