@@ -1,11 +1,9 @@
 { config, pkgs, ... }: {
   # Common home configuration shared across all hosts
   
-  # Basic user info
-  home.username = "wobbat";
-  home.homeDirectory = "/home/wobbat";
-  home.stateVersion = "23.11";
-
+  # Default state version (can be overridden by host configurations)
+  home.stateVersion = "24.05";
+  
   # Pointer cursor configuration
   home.pointerCursor = {
     name = "Adwaita";

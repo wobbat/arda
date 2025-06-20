@@ -16,16 +16,17 @@
       ../modules/packages/browsers.nix
       ../modules/packages/development.nix
       ../modules/packages/security.nix
-      ../modules/packages/system-utils.nix
+      ../modules/packages/cli-tools.nix
+      ../modules/packages/media.nix
+      ../modules/packages/desktop-utils.nix
       ../modules/packages/wayland.nix
       ../modules/packages/terminal.nix
       ../modules/packages/fonts.nix
-      ../modules/packages/dev-libs.nix
     ];
     
     # Minimal profile for basic systems
     minimal = [
-      ../modules/packages/system-utils.nix
+      ../modules/packages/cli-tools.nix
       ../modules/packages/terminal.nix
       ../modules/packages/editors.nix
     ];

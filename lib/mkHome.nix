@@ -3,12 +3,13 @@
   mkHome = {
     username,
     homeDirectory,
+    system ? "x86_64-linux",
     stateVersion ? "24.05",
     modules ? [],
     extraSpecialArgs ? {},
   }:
     home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = nixpkgs.legacyPackages.${system};
       modules = [
         {
           home.username = username;

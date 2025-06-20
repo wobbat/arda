@@ -1,188 +1,101 @@
-# NixOS Configuration Refactor - Option A Implementation Plan
+# Nix/Home-Manager Configuration Refactoring Plan
 
-## Overview
-Conservative modularization approach to eliminate duplication while preserving current structure and approach.
+This document outlines the refactoring plan for the Nix/Home-Manager configuration based on a comprehensive review. The configuration is structurally sound but has opportunities for improved organization and reduced redundancy.
 
-## Current Issues to Address
-1. **flake.nix duplication**: Nearly identical nixosConfigurations blocks
-2. **Host main.nix duplication**: ~90% identical code across hugin/remus/fawkes
-3. **Package management repetition**: Manual imports in packages.nix files
-4. **Path inconsistencies**: solo uses ../shared/ while others use ../../modules/
-5. **Home manager duplication**: Identical home-manager setup blocks
+## Priority 1 - Package Organization
 
-## Implementation Plan
+### 1.1 Merge dev-libs.nix into development.nix
+- **Rationale**: `dev-libs.nix` contains only `libpng` - too granular for a standalone group
+- **Action**: Move `libpng` to `development.nix` and remove `dev-libs.nix`
+- **Files to modify**: 
+  - `modules/packages/dev-libs.nix` (delete)
+  - `modules/packages/development.nix` (add libpng)
+  - `lib/mkPackages.nix` (remove dev-libs from desktop profile)
 
-### Phase 1: Create Helper Functions
-**Goal**: Eliminate flake.nix duplication through helper functions
+### 1.2 Split system-utils.nix into focused groups
+- **Rationale**: Current file is a grab-bag mixing CLI tools, media apps, and desktop utilities
+- **Action**: Split into three focused groups:
+  - `cli-tools.nix`: fd, ripgrep, fzf, dtrx, eza, zoxide, btop, wget, curl, unzip, file, which, asciinema
+  - `media.nix`: mpv, ytermusic, imagemagick, feh
+  - `desktop-utils.nix`: nautilus, ksnip, bluetui, steam-run, xclip, light
+- **Files to create**: 
+  - `modules/packages/cli-tools.nix`
+  - `modules/packages/media.nix` 
+  - `modules/packages/desktop-utils.nix`
+- **Files to modify**:
+  - `modules/packages/system-utils.nix` (delete)
+  - `lib/mkPackages.nix` (update desktop profile with new modules)
 
-#### Step 1.1: Create lib directory and mkSystem helper
-- [ ] Create `lib/` directory
-- [ ] Create `lib/mkSystem.nix` with function to generate nixosSystem configurations
-- [ ] Include automatic home-manager integration in helper
-- [ ] Function should accept: hostname, system, specialArgs, modules, home-modules
+### 1.3 Fix zen-browser placement
+- **Rationale**: Currently in `editors.nix` due to "browser everything broke" workaround
+- **Action**: Move zen-browser from `editors.nix` to `browsers.nix`
+- **Files to modify**:
+  - `modules/packages/editors.nix` (remove zen-browser and comment)
+  - `modules/packages/browsers.nix` (add zen-browser with inputs reference)
 
-#### Step 1.2: Update flake.nix to use helper
-- [ ] Import helper function in flake.nix
-- [ ] Replace all nixosConfigurations with single helper calls
-- [ ] Maintain existing functionality while reducing duplication
-- [ ] Test each host builds correctly
+### 1.4 Deduplicate eza package
+- **Rationale**: `eza` appears in both `system-utils.nix` and `hosts/solo/home.nix`
+- **Action**: Remove `eza` from `hosts/solo/home.nix` since it will be available through cli-tools
+- **Files to modify**: `hosts/solo/home.nix`
 
-**Expected Result**: flake.nix reduces from ~110 lines to ~40 lines
+## Priority 2 - Library Improvements
 
-### Phase 2: Extract Common System Configuration
-**Goal**: Create shared system module to eliminate host main.nix duplication
+### 2.1 Make mkHome system-agnostic
+- **Rationale**: Hardcoded `x86_64-linux` in `lib/mkHome.nix:11` reduces portability
+- **Action**: Add system parameter with default value
+- **Files to modify**: `lib/mkHome.nix`
 
-#### Step 2.1: Create shared system module
-- [ ] Create `modules/system/` directory
-- [ ] Create `modules/system/common.nix` with all shared configuration:
-  - Basic system settings (allowUnfree, stateVersion base)
-  - Nix settings (gc, optimise, experimental-features)
-  - Common boot settings (systemd-boot config limit)
-  - Networking base (networkmanager.enable)
-  - Bluetooth configuration
-  - Localization (timezone, locale settings)
-  - Audio (pipewire configuration)  
-  - Security (polkit, rtkit)
-  - Flatpak setup
-  - Base user configuration structure
+### 2.2 Remove redundant user info from common.nix
+- **Rationale**: `home.username/homeDirectory` set in both `common.nix` and overridden by `mkHome`
+- **Action**: Remove hardcoded user info from `common.nix`, let mkHome handle it
+- **Files to modify**: `modules/home/common.nix`
 
-#### Step 2.2: Create desktop environment module
-- [ ] Create `modules/system/desktop.nix` for desktop-specific config:
-  - Hyprland/Wayland setup
-  - X11 keyboard configuration
-  - Environment variables
-  - XDG portal configuration
+### 2.3 Standardize package reference style
+- **Rationale**: Inconsistent use of `with pkgs;` vs explicit `pkgs.` references
+- **Action**: Review and standardize to explicit `pkgs.` for better clarity
+- **Files to review**: All package modules for consistent style
 
-#### Step 2.3: Create desktop profiles
-- [ ] Create `modules/system/profiles/hyprland.nix` for Hyprland desktop
-- [ ] Create `modules/system/profiles/awesome.nix` for AwesomeWM + X11 setup
-- [ ] Each profile contains desktop-specific configuration
+## Priority 3 - Cleanup
 
-#### Step 2.4: Update host configurations
-- [ ] Update `hosts/hugin/main.nix` to import common + hyprland profile
-- [ ] Update `hosts/remus/main.nix` to import common + hyprland profile + vmware host
-- [ ] Update `hosts/fawkes/main.nix` to import common + awesome profile + vmware guest
-- [ ] Each host should only contain:
-  - Hardware import
-  - Package import  
-  - Hostname
-  - Host-specific overrides (bootloader, vmware, etc.)
+### 3.1 Handle unused wbp input
+- **Rationale**: `wbp` input declared in flake but no usage found
+- **Action**: Either remove if truly unused, or document purpose if reserved for future use
+- **Files to modify**: `flake.nix`
 
-**Expected Result**: Host main.nix files reduce from ~170 lines to ~30 lines each
+### 3.2 Review legacy module organization
+- **Rationale**: `legacy/i3.nix` and `legacy/tmux.nix` only used by minimal profile
+- **Action**: Evaluate if legacy namespace is warranted or if modules should be promoted
+- **Files to review**: 
+  - `modules/home/legacy/i3.nix`
+  - `modules/home/legacy/tmux.nix`
+  - `modules/home/profiles/minimal.nix`
 
-### Phase 3: Simplify Package Management
-**Goal**: Streamline package imports and organization
+### 3.3 Reduce profile coupling
+- **Rationale**: Profile system creates tight coupling between lib and module structure
+- **Action**: Consider making profiles more independent of internal module structure
+- **Files to review**: `lib/mkPackages.nix`
 
-#### Step 3.1: Create package management helper
-- [ ] Create `lib/mkPackages.nix` helper function
-- [ ] Function takes list of package module names and returns combined list
-- [ ] Add optional host-specific package overrides parameter
+## Priority 4 - Documentation
 
-#### Step 3.2: Update package organization
-- [ ] Review and consolidate package modules in `modules/packages/`
-- [ ] Ensure consistent naming and structure
-- [ ] Consider creating package profiles (base, desktop, development, etc.)
+### 4.1 Add module-level documentation
+- **Action**: Add header comments to package modules explaining their purpose and contents
+- **Files to modify**: All `modules/packages/*.nix` files
 
-#### Step 3.3: Update host package.nix files
-- [ ] Replace manual imports with helper function calls
-- [ ] Use package profiles where appropriate
-- [ ] Maintain host-specific package customization ability
+### 4.2 Document profile system
+- **Action**: Add comprehensive comments to profile system explaining usage patterns
+- **Files to modify**: `lib/mkPackages.nix`
 
-**Expected Result**: Package files reduce from ~19 lines to ~5 lines each
+## Implementation Notes
 
-### Phase 4: Standardize Home Manager Integration
-**Goal**: Eliminate home manager duplication and inconsistencies
+- All host package configurations currently use `lib.profiles.desktop` - verify no functionality is lost during package reorganization
+- Test configuration builds after each major change
+- The dot-file copying approach is intentionally impure and should not be modified
+- Maintain backwards compatibility during refactoring
 
-#### Step 4.1: Create home manager helper
-- [ ] Create `lib/mkHome.nix` helper for home-manager configuration
-- [ ] Include standard home-manager settings (useGlobalPkgs, useUserPackages)
-- [ ] Support for home module imports and user-specific overrides
+## Validation Checklist
 
-#### Step 4.2: Standardize home configurations
-- [ ] Create base home configuration template
-- [ ] Standardize common home settings (cursor, stateVersion, etc.)
-- [ ] Extract repeated home.file configurations to shared modules
-
-#### Step 4.3: Fix path inconsistencies
-- [ ] Update `hosts/solo/home.nix` to use `../../modules/` paths consistently
-- [ ] Remove `../shared/` references and migrate to standard module structure
-- [ ] Ensure all hosts use consistent module paths
-
-### Phase 5: Clean Up and Optimize
-**Goal**: Final cleanup and optimization
-
-#### Step 5.1: Remove duplicated configurations
-- [ ] Clean up any remaining duplicate configuration blocks
-- [ ] Consolidate similar settings across hosts
-- [ ] Remove unused imports and files
-
-#### Step 5.2: Standardize module structure
-- [ ] Ensure consistent module organization
-- [ ] Clean up `.files` directory organization
-- [ ] Standardize module naming conventions
-
-#### Step 5.3: Add configuration validation
-- [ ] Add basic configuration validation where possible
-- [ ] Ensure all hosts build successfully
-- [ ] Test switching between configurations
-
-## Testing Strategy
-- [ ] Test each phase incrementally
-- [ ] Verify all hosts build: `nix flake check`
-- [ ] Test each host builds and switches successfully
-- [ ] Verify home-manager configurations work correctly
-- [ ] Test rebuilding from scratch
-
-## Success Metrics
-- **Code Reduction**: Target 60-70% reduction in total configuration size
-- **Duplication Elimination**: No more than 5-10% duplicate code remaining
-- **Consistency**: All hosts use identical patterns and helpers
-- **Maintainability**: Adding new host requires <5 file changes
-- **Functionality**: All existing functionality preserved
-
-## Directory Structure After Refactor
-```
-.
-├── flake.nix                    # Simplified with helpers (~40 lines)
-├── lib/
-│   ├── mkSystem.nix            # NixOS system builder
-│   ├── mkHome.nix              # Home manager helper  
-│   └── mkPackages.nix          # Package management helper
-├── hosts/
-│   ├── hugin/
-│   │   ├── main.nix            # Minimal host config (~30 lines)
-│   │   ├── home.nix            # Standardized home config
-│   │   ├── hardware.nix        # Hardware-specific only
-│   │   └── packages.nix        # Package selection (~5 lines)
-│   ├── remus/                  # Same structure
-│   ├── fawkes/                 # Same structure  
-│   └── solo/                   # Consistent paths
-├── modules/
-│   ├── system/
-│   │   ├── common.nix          # Shared system configuration
-│   │   ├── desktop.nix         # Desktop environment base
-│   │   └── profiles/
-│   │       ├── hyprland.nix    # Hyprland profile
-│   │       └── awesome.nix     # AwesomeWM profile
-│   ├── home/                   # Home manager modules
-│   ├── packages/               # Package collections
-│   └── .files/                 # Configuration files
-```
-
-## Implementation Timeline
-- **Phase 1**: 1-2 days
-- **Phase 2**: 2-3 days  
-- **Phase 3**: 1 day
-- **Phase 4**: 1-2 days
-- **Phase 5**: 1 day
-- **Testing**: 1 day
-
-**Total Estimated Time**: 1-2 weeks
-
-## Notes for Implementation
-- Implement one phase at a time, testing after each
-- Keep backups of working configurations
-- Test on non-critical host first (recommend fawkes/VM)
-- Each phase should maintain full functionality
-- Can rollback individual phases if needed
-- Document any discoveries or issues during implementation
+- [ ] All hosts build successfully: `nix flake check`
+- [ ] Package availability maintained across all profiles
+- [ ] No duplicate packages remain
+- [ ] Profile system still functions correctly
+- [ ] Legacy modules properly integrated or relocated

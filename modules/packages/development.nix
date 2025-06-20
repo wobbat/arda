@@ -15,4 +15,5 @@ with pkgs;
   go
   luaformatter
   vsce
+  libpng
 ]
