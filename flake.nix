@@ -23,88 +23,40 @@
       home-manager,
       ...
     }:
+    let
+      lib = import ./lib/mkSystem.nix { inherit nixpkgs home-manager; };
+      homeLib = import ./lib/mkHome.nix { inherit nixpkgs home-manager; };
+    in
     {
       nixosConfigurations = {
-        hugin = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./hosts/hugin/main.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.wobbat.imports = [
-                ./hosts/hugin/home.nix
-              ];
-
-              # optionally, use home-manager.extraspecialargs to pass
-              # arguments to home.nix
-            }
-          ];
+        hugin = lib.mkSystem {
+          hostname = "hugin";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/hugin/main.nix ];
+          homeModules = [ ./hosts/hugin/home.nix ];
         };
-        remus = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./hosts/remus/main.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.wobbat.imports = [
-                ./hosts/remus/home.nix
-              ];
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
-          ];
+        
+        remus = lib.mkSystem {
+          hostname = "remus";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/remus/main.nix ];
+          homeModules = [ ./hosts/remus/home.nix ];
         };
-        fawkes = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./hosts/fawkes/main.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.wobbat.imports = [
-                ./hosts/fawkes/home.nix
-              ];
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
-          ];
+        
+        fawkes = lib.mkSystem {
+          hostname = "fawkes";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/fawkes/main.nix ];
+          homeModules = [ ./hosts/fawkes/home.nix ];
         };
       };
       homeConfigurations = {
-        "wobbat@solo" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        "wobbat@solo" = homeLib.mkHome {
+          username = "wobbat";
+          homeDirectory = "/home/wobbat";
+          stateVersion = "24.05";
           modules = [
             ./hosts/solo/home.nix
-            {
-              home.username = "wobbat";
-              home.homeDirectory = "/home/wobbat";
-              home.stateVersion = "24.05";
-              nixpkgs = {
-                config = {
-                  allowUnfree = true;
-                  allowUnfreePredicate = _: true;
-                };
-              };
-            }
           ];
         };
       };
