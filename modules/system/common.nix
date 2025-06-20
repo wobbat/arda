@@ -22,6 +22,7 @@
       substituters = [
         "https://cache.nixos.org"
       ];
+      trusted-users = [ "root" "wobbat" ];
       experimental-features = [
         "nix-command"
         "flakes"
