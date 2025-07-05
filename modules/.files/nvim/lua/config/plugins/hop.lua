@@ -13,11 +13,6 @@ return {
                 silent = true,
                 desc = 'Hop: pattern'
             })
-            vim.keymap.set('n', '/', '<cmd>HopPattern<CR>', {
-                noremap = true,
-                silent = true,
-                desc = 'Hop: pattern'
-            })
             vim.keymap.set('n', 's', '<cmd>HopChar1<CR>',
                            {noremap = true, silent = true, desc = 'Hop: char1'})
             vim.keymap.set('n', '<leader>hc', '<cmd>HopChar2<CR>',
