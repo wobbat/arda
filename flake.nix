@@ -37,6 +37,13 @@
           homeModules = [ ./hosts/hugin/home.nix ];
         };
         
+        odin = lib.mkSystem {
+          hostname = "odin";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/odin/main.nix ];
+          homeModules = [ ./hosts/odin/home.nix ];
+        };
+        
         remus = lib.mkSystem {
           hostname = "remus";
           specialArgs = { inherit inputs; };
