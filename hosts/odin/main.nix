@@ -12,7 +12,7 @@
   ];
 
   # Host-specific configuration
-  networking.hostName = "hugin";
+  networking.hostName = "odin";
 
   boot.blacklistedKernelModules = [ "mtk_t7xx" ];
 
