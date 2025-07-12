@@ -14,6 +14,4 @@
   # Host-specific configuration
   networking.hostName = "odin";
 
-  boot.blacklistedKernelModules = [ "mtk_t7xx" ];
-
 }
