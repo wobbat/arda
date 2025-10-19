@@ -21,7 +21,10 @@
 
   # Hyprland-specific rofi config (override common)
   home.file.".config/rofi" = lib.mkForce {
-    source = ../../../resources/.files/rofi_lr;
+    source = builtins.path {
+      path = ../../../resources/.files/rofi_lr;
+      name = "rofi_lr";
+    };
     recursive = true;
   };
 }
