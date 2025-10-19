@@ -23,7 +23,7 @@
   home.file.".config/rofi" = lib.mkForce {
     source = pkgs.lib.fileset.toSource {
       root = ../../../resources/.files/rofi_lr;
-      files = pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/rofi_lr [".*"]);
+      fileset = pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/rofi_lr [".*"]);
     };
     recursive = true;
   };
