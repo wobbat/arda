@@ -12,6 +12,6 @@
   };
 
   # AwesomeWM configuration
-  home.file.".config/awesome".source = ../../.files/awesome;
+  home.file.".config/awesome".source = ../../../resources/.files/awesome;
   home.file.".config/awesome".recursive = true;
 }

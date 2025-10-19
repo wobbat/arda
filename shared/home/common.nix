@@ -20,13 +20,13 @@
   ];
 
   # Common file configurations
-  home.file.".wallpapers".source = ../.files/wallpapers;
+  home.file.".wallpapers".source = ../../../resources/.files/wallpapers;
   home.file.".wallpapers".recursive = true;
   
-  home.file.".config/rofi".source = ../.files/rofi;
+  home.file.".config/rofi".source = ../../../resources/.files/rofi;
   home.file.".config/rofi".recursive = true;
 
-  home.file.".config/nvim".source = ../.files/nvim;
+  home.file.".config/nvim".source = ../../../resources/.files/nvim;
   home.file.".config/nvim".recursive = true;
 
   # Enable home manager

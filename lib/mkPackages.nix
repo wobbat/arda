@@ -12,23 +12,23 @@
   profiles = {
     # Base desktop profile - common packages for desktop systems
     desktop = [
-      ../modules/packages/editors.nix
-      ../modules/packages/browsers.nix
-      ../modules/packages/development.nix
-      ../modules/packages/security.nix
-      ../modules/packages/cli-tools.nix
-      ../modules/packages/media.nix
-      ../modules/packages/desktop-utils.nix
-      ../modules/packages/wayland.nix
-      ../modules/packages/terminal.nix
-      ../modules/packages/fonts.nix
+      ../shared/packages/editors.nix
+      ../shared/packages/browsers.nix
+      ../shared/packages/development.nix
+      ../shared/packages/security.nix
+      ../shared/packages/cli-tools.nix
+      ../shared/packages/media.nix
+      ../shared/packages/desktop-utils.nix
+      ../shared/packages/wayland.nix
+      ../shared/packages/terminal.nix
+      ../shared/packages/fonts.nix
     ];
     
     # Minimal profile for basic systems
     minimal = [
-      ../modules/packages/cli-tools.nix
-      ../modules/packages/terminal.nix
-      ../modules/packages/editors.nix
+      ../shared/packages/cli-tools.nix
+      ../shared/packages/terminal.nix
+      ../shared/packages/editors.nix
     ];
   };
 }

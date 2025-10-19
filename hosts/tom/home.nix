@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../modules/home/profiles/minimal.nix
+    ../../shared/home/profiles/minimal.nix
   ];
 
   # Host-specific packages

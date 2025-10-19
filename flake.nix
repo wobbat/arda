@@ -30,18 +30,18 @@
     in
     {
       nixosConfigurations = {
-        hugin = lib.mkSystem {
-          hostname = "hugin";
+        durin = lib.mkSystem {
+          hostname = "durin";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/hugin/main.nix ];
-          homeModules = [ ./hosts/hugin/home.nix ];
+          modules = [ ./hosts/durin/main.nix ];
+          homeModules = [ ./hosts/durin/home.nix ];
         };
         
-        odin = lib.mkSystem {
-          hostname = "odin";
+        smaug = lib.mkSystem {
+          hostname = "smaug";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/odin/main.nix ];
-          homeModules = [ ./hosts/odin/home.nix ];
+          modules = [ ./hosts/smaug/main.nix ];
+          homeModules = [ ./hosts/smaug/home.nix ];
         };
         
         remus = lib.mkSystem {
@@ -59,12 +59,12 @@
         };
       };
       homeConfigurations = {
-        "wobbat@solo" = homeLib.mkHome {
+        "wobbat@tom" = homeLib.mkHome {
           username = "wobbat";
           homeDirectory = "/home/wobbat";
           stateVersion = "24.05";
           modules = [
-            ./hosts/solo/home.nix
+            ./hosts/tom/home.nix
           ];
         };
       };

@@ -7,13 +7,13 @@
   imports = [
     ./hardware.nix
     ./packages.nix
-    ../../modules/system/common.nix
-    ../../modules/system/profiles/hyprland.nix
-    ../../modules/system/llm.nix
+    ../../shared/system/common.nix
+    ../../shared/system/profiles/hyprland.nix
+    ../../shared/system/llm.nix
   ];
 
   # Host-specific configuration
-  networking.hostName = "odin";
+  networking.hostName = "smaug";
   services.tailscale.enable = true;
 
 }

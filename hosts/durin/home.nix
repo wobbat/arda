@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../modules/home/profiles/hyprland.nix
+    ../../shared/home/profiles/hyprland.nix
   ];
 
   # Host-specific packages

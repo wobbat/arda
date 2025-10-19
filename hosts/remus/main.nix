@@ -7,8 +7,8 @@
   imports = [
     ./hardware.nix
     ./packages.nix
-    ../../modules/system/common.nix
-    ../../modules/system/profiles/hyprland.nix
+    ../../shared/system/common.nix
+    ../../shared/system/profiles/hyprland.nix
   ];
 
   # Host-specific configuration

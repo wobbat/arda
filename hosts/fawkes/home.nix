@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../modules/home/profiles/awesome.nix
+    ../../shared/home/profiles/awesome.nix
   ];
 
   # Host-specific packages

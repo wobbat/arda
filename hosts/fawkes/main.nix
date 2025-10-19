@@ -7,8 +7,8 @@
   imports = [
     ./hardware.nix
     ./packages.nix
-    ../../modules/system/common.nix
-    ../../modules/system/profiles/awesome.nix
+    ../../shared/system/common.nix
+    ../../shared/system/profiles/awesome.nix
   ];
 
   # Host-specific configuration

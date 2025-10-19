@@ -7,12 +7,12 @@
   imports = [
     ./hardware.nix
     ./packages.nix
-    ../../modules/system/common.nix
-    ../../modules/system/profiles/hyprland.nix
+    ../../shared/system/common.nix
+    ../../shared/system/profiles/hyprland.nix
   ];
 
   # Host-specific configuration
-  networking.hostName = "hugin";
+  networking.hostName = "durin";
 
   boot.blacklistedKernelModules = [ "mtk_t7xx" ];
 
