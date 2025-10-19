@@ -12,9 +12,9 @@
   };
 
   # AwesomeWM configuration
-  home.file.".config/awesome".source = builtins.path {
-    path = ../../../resources/.files/awesome;
-    name = "awesome";
+  home.file.".config/awesome".source = config.lib.fileset.toSource {
+    root = ../../../resources/.files/awesome;
+    files = config.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/awesome [".*"]);
   };
   home.file.".config/awesome".recursive = true;
 }
