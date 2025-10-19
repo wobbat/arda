@@ -16,4 +16,5 @@ with pkgs;
   luaformatter
   vsce
   libpng
+  nix-ld
 ]

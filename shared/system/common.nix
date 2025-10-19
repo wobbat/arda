@@ -84,6 +84,9 @@
   # =============================================================================
 
   security.polkit.enable = true;
+  
+  # Enable nix-ld for running non-Nix executables
+  programs.nix-ld.enable = true;
 
   # =============================================================================
   # Flatpack
