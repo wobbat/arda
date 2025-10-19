@@ -20,21 +20,21 @@
   ];
 
   # Common file configurations
-  home.file.".wallpapers".source = config.lib.fileset.toSource {
+  home.file.".wallpapers".source = pkgs.lib.fileset.toSource {
     root = ../../../resources/.files/wallpapers;
-    files = config.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/wallpapers [".*"]);
+    files = pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/wallpapers [".*"]);
   };
   home.file.".wallpapers".recursive = true;
   
-  home.file.".config/rofi".source = config.lib.fileset.toSource {
+  home.file.".config/rofi".source = pkgs.lib.fileset.toSource {
     root = ../../../resources/.files/rofi;
-    files = config.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/rofi [".*"]);
+    files = pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/rofi [".*"]);
   };
   home.file.".config/rofi".recursive = true;
 
-  home.file.".config/nvim".source = config.lib.fileset.toSource {
+  home.file.".config/nvim".source = pkgs.lib.fileset.toSource {
     root = ../../../resources/.files/nvim;
-    files = config.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/nvim [".*"]);
+    files = pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/nvim [".*"]);
   };
   home.file.".config/nvim".recursive = true;
 
