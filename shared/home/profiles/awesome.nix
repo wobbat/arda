@@ -13,8 +13,8 @@
 
   # AwesomeWM configuration
   home.file.".config/awesome".source = pkgs.lib.fileset.toSource {
-    root = ../../../resources/.files/awesome;
-    fileset = pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../../resources/.files/awesome [".*"]);
+    root = ../../resources/.files/awesome;
+    fileset = pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceByRegex ../../resources/.files/awesome [".*"]);
   };
   home.file.".config/awesome".recursive = true;
 }
